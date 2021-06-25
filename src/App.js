@@ -20,7 +20,7 @@ function App() {
       query: userInput
     }}).then(response => {
       const moviesArray = response.data.results;
-      moviesArray.map( (movie) => {
+      moviesArray.map( (movie, index) => {
         let movieID = movie.id
         console.log(movieID)
         const test = axios({
@@ -64,12 +64,15 @@ function App() {
 
 export default App;
 
+// Create a component that will hold the li
+  // Info to pass in (title, description, cast, director, run time, genre, trailer )
+    // implement match method to find director 
+    // director nested randomly within second crew array. need match "director" to find object
+    
+    // get YouTube video showing on screen (https://stackoverflow.com/questions/55528577/react-moviedb-api-problem-setting-this-setstate-twice-breaks-my-component)
 
-// Each movie has Id when searching by query
-// Need to get that id into url before api key 
-// To access information needed for project (e.g. director and cast), append using commas to the end of url
+    // poster: properly get image url setup (https://image.tmdb.org/t/p/original/2DyEk84XnbJEdPlGF43crxfdtHH.jpg)
+    // look into 3 types of url to use (https://www.youtube.com/watch?v=sZ0bZGfg_m4)
+    // Michelle's recommendation to filter out adult genre (adult: false, video: true?)
 
-// Make query using search term
-// Put in variable and have it used in URL
-
-// https://image.tmdb.org/t/p/original/2DyEk84XnbJEdPlGF43crxfdtHH.jpg
+    // Ask about turning two fetch's into async functions during weekend office hours
