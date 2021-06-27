@@ -1,16 +1,17 @@
-import logo from './tmdb.svg'
+import { useState } from 'react';
 import axios from 'axios';
 import './App.css';
-import Header from './Header';
-import MovieInfo from './MovieInfo';
-import { useState } from 'react';
+import Header from './Component/Header'
+import Footer from './Component/Footer'
+import Movies from './Component/Movies'
+
 
 function App() {
   const baseURL = 'https://api.themoviedb.org/3/search/movie'
   const [searchTerm, setSearchTerm] = useState('');
   const [firstResults, setFirstResults] = useState([])
 
-  const handleSearch = (event) => {
+  const firstSearch = (event) => {
   event.preventDefault();
   axios({
     method: 'GET',
@@ -29,6 +30,7 @@ function App() {
         : alert(`No results found for ${searchTerm}, please try again.`)
     });
   }
+  
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
@@ -38,18 +40,15 @@ function App() {
     <div className="App"> 
       <Header 
         handleChange={handleChange}
-        handleSearch={handleSearch}
+        firstSearch={firstSearch}
       />
 
-      <MovieInfo 
+      <Movies 
         firstResults={firstResults}
-
       />
 
-    <footer>
-      <p>This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
-      <img className="logo" src={logo} alt="The Movie Database Logo" />
-    </footer>
+    <Footer />
+
     </div>
   );
 }
