@@ -1,10 +1,10 @@
 import axios from "axios"
 import { useState, useEffect } from 'react'
 
-function Movies ({firstResults, }){
+function Movies ({firstResults }){
     const posterURL = 'https://image.tmdb.org/t/p/original'
     const urlYouTube = 'https://www.youtube.com/watch?v='
-    // const [secondResults, setSecondResults] = useState([])
+    const [secondResults, setSecondResults] = useState([])
     // const [director, setDirector] = useState([])
 
     return(
@@ -27,7 +27,7 @@ function Movies ({firstResults, }){
                     }).then(movieData => {
                     // console.log(movieData)
                     // setSecondResults(movieData.data)
-
+                    // console.log(setSecondResults)
                     // console.log(movieData.data.imdb_id+index);
                     console.log(movieData.data.title)
                     // console.log(movieData.data.overview)
@@ -46,9 +46,9 @@ function Movies ({firstResults, }){
                 });
                     return(
                         <li className="movieContainer">
-                            <h2>Test</h2>
+                            <h2>Results Within Li</h2>
                             {
-                                
+                                // <h2>{secondResults.title}</h2>
                             }
                         </li>
                     )

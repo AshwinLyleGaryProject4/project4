@@ -28,6 +28,7 @@ function App() {
         firstResponse.length !== 0  
         ? setFirstResults(firstResponse)
         : alert(`No results found for ${searchTerm}, please try again.`)
+        console.log(firstResponse);
     });
   }
   
