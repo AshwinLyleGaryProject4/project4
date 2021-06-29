@@ -6,15 +6,14 @@ import Header from './Component/Header'
 import Footer from './Component/Footer'
 import MainPage from './Component/MainPage'
 import MovieInfo from './Component/MovieInfo';
+import HeaderForm from './Component/HeaderForm';
 
 
 function App() {
   return (
     <Router>
       <div className="wrapper"> 
-        <header>
-          <h1>Quick Flick Picker</h1>
-        </header>
+        <HeaderForm />
 
         <Route exact path="/" component={MainPage} />
         <Route exact path="/movie/:movieID" component={MovieInfo}/>
