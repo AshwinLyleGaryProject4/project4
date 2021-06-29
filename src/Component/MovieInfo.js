@@ -5,18 +5,18 @@ const MovieInfo = (props) => {
     const [movie, setMovie] = useState({}); 
     // takes content of object and puts it inside empty object
     const{ movieID } = props.match.params
-    console.log(props)
-    console.log(props.match)
-    console.log(props.match.params)
 
     useEffect( () => {
         axios({
             url: `https://api.themoviedb.org/3/movie/${movieID}`,
             params: {
-                api_key: '9709355fc5ce17fa911605a13712678d'
+                api_key: '9709355fc5ce17fa911605a13712678d',
+                append_to_response: 'videos,images,credits',
+                language: 'en-US',
             }
         }).then( (result) => {
             setMovie(result.data);
+            console.log(movie)
         })
     }, [movieID]) //clear warning in console.
 

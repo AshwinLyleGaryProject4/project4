@@ -1,58 +1,54 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom'
-
-function MainPage ({firstResults }){
-    const [movies, setMovies] = useState([])
-
-    useEffect( () => {
-        axios({
-        url: 'https://api.themoviedb.org/3/discover/movie',
-        params: {
-        api_key: '9709355fc5ce17fa911605a13712678d',
-        language: 'en-US',
-        sort_by: 'popularity.desc',
-        include_adult: 'false',
-        include_video: 'false',
+import { Link } from "react-router-dom";
+import UserList from "./UserList";
+function MainPage({ firstResults }) {
+  const [movies, setMovies] = useState([]);
+  useEffect(() => {
+    axios({
+      url: "https://api.themoviedb.org/3/discover/movie",
+      params: {
+        api_key: "9709355fc5ce17fa911605a13712678d",
+        language: "en-US",
+        sort_by: "popularity.desc",
+        include_adult: "false",
+        include_video: "false",
         page: 1,
         primary_release_year: 1993,
-    },
-        }).then( (response) => {
-        setMovies(response.data.results);
-        })
-    }, [])
-    // console.log(movies);
-
-    return(
-        <ul className="catalogue">
-            {
-                movies.map( (movie) => {
-                return (
-                    <li key={movie.id}>
-                        <Link to={`/movie/${movie.id}`}>
-                            <img 
-                                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
-                                alt={`Poster for ${movie.original_title}`} />
-                        </Link>
-                    </li>
-                )
-                })
-            }
-        </ul>
-    )   
+      },
+    }).then((response) => {
+      setMovies(response.data.results);
+    });
+  }, []);
+  // console.log(movies);
+  return (
+    <div>
+    <UserList />
+      <ul className="catalogue">
+        {movies.slice(0, 10).map((movie) => {
+          return (
+            <li key={movie.id}>
+              <Link to={`/movie/${movie.id}`}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={`Poster for ${movie.original_title}`}
+                />
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 }
-
 export default MainPage;
-
 // Go over today's code along.
 // Use useEffect and useState.
-
 // function Movies ({firstResults }){
 //     const posterURL = 'https://image.tmdb.org/t/p/original'
 //     const urlYouTube = 'https://www.youtube.com/watch?v='
 //     const [secondResults, setSecondResults] = useState([])
 //     // const [director, setDirector] = useState([])
-
 //     return(
 //         <main className="wrapper">
 //             <h2>Results of Movies Should Display Below</h2>
@@ -60,7 +56,6 @@ export default MainPage;
 //                 {
 //                     firstResults.map( (movie, index) => {
 //                         let movieID = movie.id
-                        
 //                         axios({
 //                         method: 'GET',
 //                         url: `https://api.themoviedb.org/3/movie/${movieID}?`,
@@ -83,7 +78,6 @@ export default MainPage;
 //                     // console.log(movieData.data.credits.cast[0].name)
 //                     // console.log(movieData.data.credits.cast[1].name)
 //                     // console.log(movieData.data.credits.cast[2].name)
-
 //                     // let directorPath = movieData.data.credits.crew
 //                     // function isDirector(director){
 //                     //     return director.job === "Director"
