@@ -5,7 +5,7 @@ const Header = ({firstSearch, handleChange}) => {
 
             <form onSubmit={firstSearch}>
                 <label className="sr-only" htmlFor="search">Search</label>
-                <input onChange={handleChange} type="text" name="search" id="search" placeholder="Search Here"/>
+                <input onSubmit={handleChange} type="text" name="search" id="search" placeholder="Search Here"/>
                 <button type="submit">Search</button>
             </form>
         </header>
@@ -13,3 +13,5 @@ const Header = ({firstSearch, handleChange}) => {
 }
 
 export default Header;
+
+// handleChange on submit. Go through notes to see how to stop page from breaking.
