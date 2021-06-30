@@ -36,3 +36,10 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 .logo{
   
 }
+
+h3,
+a {
+  color: darkgoldenrod;
+}
+
+
