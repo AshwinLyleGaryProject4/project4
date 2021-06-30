@@ -24,7 +24,7 @@ function App() {
   const [cast, setCast] = useState();
   const [youTube, setYouTube] = useState();
 
-  const [displayYouTube, setDisplayYouTube] = useState(false);
+  // const [displayYouTube, setDisplayYouTube] = useState(false);
 
   const handleSearch = (event, userSearchInput) => {
     event.preventDefault();
@@ -68,9 +68,14 @@ function App() {
       },
     }).then((result) => {
       console.log(result);
-      console.log(result.data.results[0].key);
+      // console.log(result.data.results[0].key);
 
-      setYouTube(result.data.results[0].key);
+      // IF result.data.results[0].key exists (is true), THEN setYouTube link
+      if (result.data.results.length < 1) {
+        setYouTube(null)
+      } else {
+        setYouTube(result.data.results[0].key);
+      }
     });
 
     axios({
@@ -92,7 +97,7 @@ function App() {
 
     setDisplayMovieInfo(true);
 
-    setDisplayYouTube(true);
+    // setDisplayYouTube(true);
   };
 
   const handleClose = () => {
@@ -119,7 +124,7 @@ function App() {
               director={director}
               cast={cast}
               youTube={youTube}
-              displayYouTube={displayYouTube}
+              // displayYouTube={displayYouTube}
             />
           ) : null}
         </div>

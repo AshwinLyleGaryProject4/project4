@@ -5,8 +5,7 @@ const MovieInfo = ({
   handleClose,
   director,
   cast,
-  youTube,
-  displayYouTube
+  youTube
 }) => {
   return (
     <div className="moviePage">
@@ -23,7 +22,7 @@ const MovieInfo = ({
                 : null}
               <h2>{movieInfoDetail.tagline}</h2>
               <p>{movieInfoDetail.overview}</p>
-              {displayYouTube ? (
+              {youTube ? (
                 <ReactPlayer
                   url={`https://www.youtube.com/watch?v=${youTube}`}
                   width="20vw"
