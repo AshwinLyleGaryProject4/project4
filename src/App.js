@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { useState } from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
 import axios from 'axios';
 import './App.css';
 import Footer from './Component/Footer'
-import MainPage from './Component/MainPage'
 import MovieInfo from './Component/MovieInfo';
 import HeaderForm from './Component/HeaderForm';
 import UserSearchResult from './Component/UserSearchResult';
@@ -11,6 +10,7 @@ function App() {
   const [userSearchResults, setUserSearchResults] = useState();
   const [displayNaturalForm, setDisplayNaturalForm] = useState(false);
   const [movieInfoDetail, setMovieInfoDetail] = useState()
+  const [displayMovieInfo, setDisplayMovieInfo] = useState(false)
   const [youTube, setYouTube] = useState()
   const [cast, setCast] = useState()
   const [director, setDirector] = useState()
@@ -33,18 +33,15 @@ function App() {
         console.log(response);
       });
       setDisplayNaturalForm(true);
-      // setUserSearchInput("");
     };
 
     // For Modal 
-    const handleClick = () => {
+    const handleClick = (movieID) => {
       // Main Info 
       axios({
             url: `https://api.themoviedb.org/3/movie/${movieID}`,
             params: {
                 api_key: '9709355fc5ce17fa911605a13712678d',
-                // append_to_response: 'videos,images,credits',
-                // language: 'en-US',
             }
         }).then( (result) => {
             setMovieInfoDetail(result.data);
@@ -55,8 +52,6 @@ function App() {
             url: `https://api.themoviedb.org/3/movie/${movieID}/videos`,
             params: {
                 api_key: '9709355fc5ce17fa911605a13712678d',
-                // append_to_response: 'videos,images,credits',
-                // language: 'en-US',
             }
         }).then( (result) => {
             setYouTube(result.data.results[0].key)
@@ -65,21 +60,21 @@ function App() {
             url: `https://api.themoviedb.org/3/movie/${movieID}/credits`,
             params: {
                 api_key: '9709355fc5ce17fa911605a13712678d',
-                // append_to_response: 'videos,images,credits',
-                // language: 'en-US',
             }
         }).then( (result) => {
           // Call for directors and cast members 
-          const directorArray = result.data.crew.filter( () => {
+          const directorArray = result.data.crew.filter( (crew) => {
             return crew.job === 'Director'
           })
           setDirector(directorArray[0].name)
           setCast(result.data.cast.slice(0, 3))
     })
-    
+    setDisplayMovieInfo(true);
   }
         
-
+  const handleClose = () => {
+    setDisplayMovieInfo(false)
+  }
 
   return (
 
@@ -88,66 +83,13 @@ function App() {
         <HeaderForm handleSearch={handleSearch}/>
         
         <UserSearchResult userSearchResults={userSearchResults} 
-        displayNaturalForm={displayNaturalForm} handleSearch={handleClick}/>
+        displayNaturalForm={displayNaturalForm} handleClick={handleClick}/>
 
-        <Route exact path="/" component={MainPage} />
-
-        <Route exact path="/movie/:movieID" component={MovieInfo}/>
-
+      {displayMovieInfo ? (<MovieInfo movieInfoDetail={movieInfoDetail} director={director} cast={cast} youTube={youTube} handleClose={handleClose} />):null}
+      
         <Footer />
       </div>
     </Router>
   );
 }
 export default App;
-// Create a component that will hold the li
-  // Info to pass in (title, description, cast, director, run time, genre, trailer )
-    // implement match method to find director 
-    // director nested randomly within second crew array. need match "director" to find object
-    // get YouTube video showing on screen (https://stackoverflow.com/questions/55528577/react-moviedb-api-problem-setting-this-setstate-twice-breaks-my-component)
-    // look into 3 types of url to use (https://www.youtube.com/watch?v=sZ0bZGfg_m4)
-    // State just list of movies (arrayOfMovies). Grab movie ID
-    // Want empty array and push into array.
-  // First axios call, change to search
-  // Add query parameter, get rid of select year
-  // Soft code to ${searchInput}
-  // const searchInput = "God Father"
-  // Create component that will get userInput and import it to there
-  // Pull API call based on user parameter
-  // Axios call, separate component to do search
-  // Pull that in together
-//    const firstSearch = (event) => {
-//   event.preventDefault();
-//   axios({
-//     method: 'GET',
-//     url: baseURL,
-//     dataResponse: 'json',
-//     params: {
-//       api_key: '9709355fc5ce17fa911605a13712678d',
-//       language: 'en-US',
-//       page: 1,
-//       adult: false,
-//       query: searchTerm
-//     }}).then(response => {
-//       const firstResponse = response.data.results;
-//         firstResponse.length !== 0  
-//         ? setFirstResults(firstResponse)
-//         : alert(`No results found for ${searchTerm}, please try again.`)
-//     });
-//   }
-//   const handleChange = (event) => {
-//     setSearchTerm(event.target.value);
-//   }
-//   return (
-//     <div className="App"> 
-//       <Header 
-//         handleChange={handleChange}
-//         firstSearch={firstSearch}
-//       />
-//       <Movies 
-//         firstResults={firstResults}
-//       />
-//     <Footer />
-//     </div>
-//   );
-// }
