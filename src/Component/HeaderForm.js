@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 const HeaderForm = ({handleSearch}) => {
-    const [userSearchInput, setUserSearchInput] = useState('Titanic') 
+    const [userSearchInput, setUserSearchInput] = useState('') 
     // const [firstResults, setFirstResults] = useState([])
     return(
         <header>

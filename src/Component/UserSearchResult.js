@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import noPoster from '../noPoster.jpg'
 const UserSearchResult = ({userSearchResults, displayNaturalForm}) => {
     const [genreInput, setGenreInput] = useState();
     const [timeInput, setTimeInput] = useState();
@@ -35,6 +36,7 @@ const UserSearchResult = ({userSearchResults, displayNaturalForm}) => {
         <ul className="resultContainer">
           {userSearchResults
             ? userSearchResults.map((movie) => {
+              console.log(movie);
                 return (
                   <li>
                     <div className="poster">
@@ -45,6 +47,7 @@ const UserSearchResult = ({userSearchResults, displayNaturalForm}) => {
                   </div> */}
                       <div className="poster-image">
                         <img
+                          src={'https://image.tmdb.org/t/p/w500null'}
                           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                           alt={`Poster for ${movie.original_title}`}
                         />

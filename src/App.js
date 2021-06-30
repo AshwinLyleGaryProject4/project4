@@ -2,15 +2,19 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import axios from 'axios';
 import './App.css';
-// import Header from './Component/Header'
 import Footer from './Component/Footer'
 import MainPage from './Component/MainPage'
 import MovieInfo from './Component/MovieInfo';
 import HeaderForm from './Component/HeaderForm';
 import UserSearchResult from './Component/UserSearchResult';
 function App() {
-    const [userSearchResults, setUserSearchResults] = useState();
+  const [userSearchResults, setUserSearchResults] = useState();
   const [displayNaturalForm, setDisplayNaturalForm] = useState(false);
+  const [movieInfoDetail, setMovieInfoDetail] = useState()
+  const [youTube, setYouTube] = useState()
+  const [cast, setCast] = useState()
+  const [director, setDirector] = useState()
+
     const handleSearch = (event, userSearchInput) => {
       event.preventDefault();
       axios({
@@ -31,14 +35,65 @@ function App() {
       setDisplayNaturalForm(true);
       // setUserSearchInput("");
     };
+
+    // For Modal 
+    const handleClick = () => {
+      // Main Info 
+      axios({
+            url: `https://api.themoviedb.org/3/movie/${movieID}`,
+            params: {
+                api_key: '9709355fc5ce17fa911605a13712678d',
+                // append_to_response: 'videos,images,credits',
+                // language: 'en-US',
+            }
+        }).then( (result) => {
+            setMovieInfoDetail(result.data);
+            console.log(result.data)
+        });
+        // YouTube Call
+                axios({
+            url: `https://api.themoviedb.org/3/movie/${movieID}/videos`,
+            params: {
+                api_key: '9709355fc5ce17fa911605a13712678d',
+                // append_to_response: 'videos,images,credits',
+                // language: 'en-US',
+            }
+        }).then( (result) => {
+            setYouTube(result.data.results[0].key)
+        });
+                        axios({
+            url: `https://api.themoviedb.org/3/movie/${movieID}/credits`,
+            params: {
+                api_key: '9709355fc5ce17fa911605a13712678d',
+                // append_to_response: 'videos,images,credits',
+                // language: 'en-US',
+            }
+        }).then( (result) => {
+          // Call for directors and cast members 
+          const directorArray = result.data.crew.filter( () => {
+            return crew.job === 'Director'
+          })
+          setDirector(directorArray[0].name)
+          setCast(result.data.cast.slice(0, 3))
+    })
+    
+  }
+        
+
+
   return (
+
     <Router>
       <div className="wrapper"> 
         <HeaderForm handleSearch={handleSearch}/>
+        
         <UserSearchResult userSearchResults={userSearchResults} 
-        displayNaturalForm={displayNaturalForm}/>
+        displayNaturalForm={displayNaturalForm} handleSearch={handleClick}/>
+
         <Route exact path="/" component={MainPage} />
+
         <Route exact path="/movie/:movieID" component={MovieInfo}/>
+
         <Footer />
       </div>
     </Router>
