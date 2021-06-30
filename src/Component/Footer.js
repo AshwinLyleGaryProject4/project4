@@ -1,5 +1,7 @@
 import logo from '../tmdb.svg'
 
+
+
 function Footer () {
     return(
         <footer>

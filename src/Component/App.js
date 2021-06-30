@@ -24,7 +24,7 @@ function App() {
   const [cast, setCast] = useState();
   const [youTube, setYouTube] = useState();
 
-  const [displayYouTube, setDisplayYouTube] = useState(false)
+  const [displayYouTube, setDisplayYouTube] = useState(false);
 
   const handleSearch = (event, userSearchInput) => {
     event.preventDefault();
@@ -46,7 +46,6 @@ function App() {
     });
 
     setDisplayNaturalForm(true);
-
   };
 
   // Opens Modal when clicked on images
@@ -60,7 +59,6 @@ function App() {
       console.log(result);
 
       setMovieInfoDetail(result.data);
-
     });
 
     axios({
@@ -103,27 +101,28 @@ function App() {
 
   return (
     <Router>
-      <div className="wrapper">
-        <HeaderForm handleSearch={handleSearch} />
+      <div>
+        <div className="wrapper">
+          <HeaderForm handleSearch={handleSearch} />
 
-        <UserSearchResult
-          userSearchResults={userSearchResults}
-          displayNaturalForm={displayNaturalForm}
-          handleClick={handleClick}
-        />
-
-        {/* Modal for each movie parameters */}
-        {displayMovieInfo ? (
-          <MovieInfo
-            movieInfoDetail={movieInfoDetail}
-            handleClose={handleClose}
-            director={director}
-            cast={cast}
-            youTube={youTube} 
-            displayYouTube={displayYouTube}
+          <UserSearchResult
+            userSearchResults={userSearchResults}
+            displayNaturalForm={displayNaturalForm}
+            handleClick={handleClick}
           />
-        ) : null}
 
+          {/* Modal for each movie parameters */}
+          {displayMovieInfo ? (
+            <MovieInfo
+              movieInfoDetail={movieInfoDetail}
+              handleClose={handleClose}
+              director={director}
+              cast={cast}
+              youTube={youTube}
+              displayYouTube={displayYouTube}
+            />
+          ) : null}
+        </div>
 
         <Footer />
       </div>
@@ -132,4 +131,3 @@ function App() {
 }
 
 export default App;
-

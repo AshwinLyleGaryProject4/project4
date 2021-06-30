@@ -6,7 +6,9 @@ const HeaderForm = ({ handleSearch }) => {
 
   return (
     <header>
-      <h1>Quick Flick Picker</h1>
+      <h1>
+        Quick <span>Flick</span> Picker
+      </h1>
 
       <form
         onSubmit={(event) => {
