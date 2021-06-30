@@ -2,9 +2,10 @@ import { useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 import "../styles/App.scss";
+import firebase from "../config/firebase";
 
 import Footer from "./Footer";
-
+import UserList from "./UserList"
 import MovieInfo from "./MovieInfo";
 import HeaderForm from "./HeaderForm";
 import UserSearchResult from "./UserSearchResult";
@@ -23,6 +24,8 @@ function App() {
   const [director, setDirector] = useState();
   const [cast, setCast] = useState();
   const [youTube, setYouTube] = useState();
+
+  const [displayAddList, setDisplayAddList] = useState(false)
 
   // const [displayYouTube, setDisplayYouTube] = useState(false);
 
@@ -97,6 +100,26 @@ function App() {
 
     setDisplayMovieInfo(true);
 
+
+
+    // console.log(movieListRef);
+
+    // console.log(movieListRef.child())
+
+  //     const result = movieListRef.filter((movie) => {
+  //       if (movie.name.urlLink === postNum) {
+  //         return true;
+  //       } else {
+  //         return false;
+  //       }
+  //     });
+
+  // if () {
+  //   setDisplayAddList(true)
+  // } else {
+  //   setDisplayAddList(false)
+  // }
+
     // setDisplayYouTube(true);
   };
 
@@ -104,11 +127,32 @@ function App() {
     setDisplayMovieInfo(false);
   };
 
+  // console.log(movieInfoDetail)
+
+  const handleAddToList = () => {
+
+    // console.log(youTube);
+
+    const movieListRef = firebase.database().ref();
+
+    const movieListInfo = movieListRef;
+    movieListInfo.push({
+      title: movieInfoDetail.title,
+      genre: movieInfoDetail.genres,
+      length: movieInfoDetail.runtime,
+      id: movieInfoDetail.id,
+      poster_path: movieInfoDetail.poster_path
+    });
+
+
+  }
   return (
     <Router>
       <div>
         <div className="wrapper">
           <HeaderForm handleSearch={handleSearch} />
+
+          <UserList handleClick={handleClick}/>
 
           <UserSearchResult
             userSearchResults={userSearchResults}
@@ -125,6 +169,8 @@ function App() {
               cast={cast}
               youTube={youTube}
               // displayYouTube={displayYouTube}
+              handleAddToList={handleAddToList}
+              displayAddList={displayAddList}
             />
           ) : null}
         </div>

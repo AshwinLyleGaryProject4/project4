@@ -5,7 +5,9 @@ const MovieInfo = ({
   handleClose,
   director,
   cast,
-  youTube
+  youTube, 
+  handleAddToList
+  // displayAddList
 }) => {
   return (
     <div className="moviePage">
@@ -22,6 +24,12 @@ const MovieInfo = ({
                 : null}
               <h2>{movieInfoDetail.tagline}</h2>
               <p>{movieInfoDetail.overview}</p>
+              <span>{movieInfoDetail.genres.map((genre) => {
+                return <p>{genre.name}</p>;
+              })}</span>
+              <span>{movieInfoDetail.runtime}</span>
+              <span>Hello</span>
+
               {youTube ? (
                 <ReactPlayer
                   url={`https://www.youtube.com/watch?v=${youTube}`}
@@ -41,6 +49,8 @@ const MovieInfo = ({
             </div>
 
             <button onClick={handleClose}>X</button>
+
+            <button onClick={handleAddToList}>Add to List</button>
           </div>
         </div>
       ) : null}

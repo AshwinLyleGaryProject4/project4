@@ -125,6 +125,26 @@ img:hover {
   width: 20vw;
 }
 
+
+// User List
+
+.userList {
+  display: flex;
+
+  li {
+    width:10%;
+  }
+.movieListItem {
+      display: flex;
+    flex-direction: column;
+
+  img {
+    width: 50%;
+    height: 100%;
+  }
+}
+}
+
 /* Catalogue */
 
 ul.catalogue {
