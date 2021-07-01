@@ -33,8 +33,9 @@ function App() {
         query: userSearchInput,
       },
     }).then((response) => {
-      setUserSearchResults(response.data.results);
-      console.log(response);
+      response.data.total_results !== 0
+        ? setUserSearchResults(response.data.results)
+        : alert(`It doesn't seem like ${userSearchInput} is a movie. Please try again`);
     });
     setDisplayNaturalForm(true);
   };
@@ -70,15 +71,27 @@ function App() {
         params: {
           api_key: "9709355fc5ce17fa911605a13712678d",
         },
-      }).then((result) => {
-        console.log(result);
-        const directorArray = result.data.crew.filter((crew) => {
-          return crew.job === "Director";
-        });
-        console.log(directorArray[0].name);
-        setDirector(directorArray[0].name);
-        setCast(result.data.cast.slice(0, 4));
+            }).then((result) => {
+      // console.log(result);
+      const directorArray = result.data.crew.filter((crew) => {
+        return crew.job === "Director";
       });
+      // console.log(directorArray[0]);
+      directorArray.length !== 0
+      ? setDirector(directorArray[0].name)
+      : <h2>No Director Found</h2>
+      setCast(result.data.cast.slice(0, 4));
+    });
+
+      // }).then((result) => {
+      //   console.log(result);
+      //   const directorArray = result.data.crew.filter((crew) => {
+      //     return crew.job === "Director";
+      //   });
+      //   console.log(directorArray[0].name);
+      //   setDirector(directorArray[0].name);
+      //   setCast(result.data.cast.slice(0, 4));
+      // });
 
       const movieListRef = firebase.database().ref();
 

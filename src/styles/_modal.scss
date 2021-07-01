@@ -1,6 +1,36 @@
 
 /* Modal */
 
+.closeElementIcon {
+  font-size: 3rem;
+  color: rgba(0,0,0,0.5);
+  // border: 1px solid $primaryColor;
+
+}
+
+
+
+.modalContainer {
+  position: relative;
+
+  button {
+      position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  z-index: 1;
+  }
+
+  button:hover {
+    cursor: pointer; 
+    transform: rotate(540deg);
+      transition-duration: 0.2s;
+    // transform: rotate(270deg);
+  }
+}
+
 .modal {
   display: flex;
 

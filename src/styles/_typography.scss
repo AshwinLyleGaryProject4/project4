@@ -88,6 +88,8 @@ h3 {
 }
 
 h4 {
+  // font-size: ;
+  // color: red;
   text-transform: uppercase;
   padding: 15px 0;
 
@@ -95,6 +97,15 @@ h4 {
     text-transform: capitalize;
 
   }
+}
+
+h5 {
+  color: #E26822;
+  font-size: 1.5rem;
+  font-style: italic;
+  letter-spacing: 1.2px;
+  padding-top: 20px;
+  text-align: center;
 }
 
 p {

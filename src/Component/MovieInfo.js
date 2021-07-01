@@ -1,4 +1,6 @@
 import ReactPlayer from "react-player";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 const MovieInfo = ({
   movieInfoDetail,
@@ -9,11 +11,15 @@ const MovieInfo = ({
   handleAddToList,
   displayAddList
 }) => {
+
+  const closeElement = <FontAwesomeIcon icon={faTimesCircle} aria-hidden="true" className="closeElementIcon" />;
+
+
   return (
     <div className="moviePage">
       {movieInfoDetail ? (
         <div className="modal">
-          <div>
+          <div className="modalContainer">
             <div className="modalTextContent">
               <h3>{movieInfoDetail.title}</h3>
               <h4>
@@ -21,7 +27,7 @@ const MovieInfo = ({
                 <span>{director}</span>
               </h4>
               <h4>
-                <strong>Cast:</strong>{" "}
+                <strong>Cast:</strong>
                 {cast
                   ? cast.map((castMember) => {
                       return <span> {castMember.name} </span>;
@@ -47,7 +53,7 @@ const MovieInfo = ({
                   height="30vh"
                 />
               ) : (
-                <h2>YouTube Link Not Found</h2>
+                <h5><span>Sorry!<p>There's no YouTube link this movie!</p></span></h5>
               )}
             </div>
 
@@ -59,12 +65,17 @@ const MovieInfo = ({
               />
               {/* </div> */}
 
-              {displayAddList ? <div className="addButton">
-                <button onClick={handleAddToList}>Add to List</button>
-              </div> : null}
+              {displayAddList ? (
+                <div className="addButton">
+                  <button onClick={handleAddToList}>Add to List</button>
+                </div>
+              ) : null}
             </div>
 
-            <button onClick={handleClose}>X</button>
+            <button onClick={handleClose} className="closeElementButton">
+              {closeElement}
+              {/* <i class="fas fa-times-circle"></i> */}
+            </button>
           </div>
         </div>
       ) : null}
