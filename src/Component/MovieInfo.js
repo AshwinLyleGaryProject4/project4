@@ -7,7 +7,7 @@ const MovieInfo = ({
   cast,
   youTube,
   handleAddToList,
-  // displayAddList
+  displayAddList
 }) => {
   return (
     <div className="moviePage">
@@ -30,11 +30,11 @@ const MovieInfo = ({
               </h4>
               {/* <h2>{movieInfoDetail.tagline}</h2> */}
               <p>{movieInfoDetail.overview}</p>
-              {/* <p>
+              <p>
                 {movieInfoDetail.genres.map((genre) => {
                   return <p>{genre.name}</p>;
                 })}
-              </p> */}
+              </p>
               <h4>
                 <strong>Runtime:</strong>{" "}
                 <span>{movieInfoDetail.runtime} mins</span>
@@ -59,9 +59,9 @@ const MovieInfo = ({
               />
               {/* </div> */}
 
-              <div className="addButton">
+              {displayAddList ? <div className="addButton">
                 <button onClick={handleAddToList}>Add to List</button>
-              </div>
+              </div> : null}
             </div>
 
             <button onClick={handleClose}>X</button>
