@@ -10,7 +10,7 @@ const UserSearchResult = ({userSearchResults, displayNaturalForm, handleClick}) 
             ? userSearchResults.map((movie) => {
                 return (
                   <li>
-                    <div className="poster">
+                    <div className="movieResult">
                       <div className="poster-image">
                         
                         <img

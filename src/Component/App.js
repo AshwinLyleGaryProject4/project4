@@ -27,8 +27,6 @@ function App() {
 
   const [displayAddList, setDisplayAddList] = useState(false)
 
-  // const [displayYouTube, setDisplayYouTube] = useState(false);
-
   const handleSearch = (event, userSearchInput) => {
     event.preventDefault();
 
