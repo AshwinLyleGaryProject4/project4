@@ -2,7 +2,6 @@
 
 .userList {
   width: 100%;
-  // display: flex;
 }
 
 .resultContainer {
@@ -10,14 +9,11 @@
   flex-wrap: wrap;
   justify-content: center;
 
-  img:hover {
+  img:hover,
+  img:focus {
     transform: scale(1.1);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     border: 10px solid rgba(0, 0, 0, 0.4);
   }
 }
-
-// .movieResult {
-
-// }

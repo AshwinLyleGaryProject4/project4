@@ -27,6 +27,7 @@
 
     button {
       height: 40px;
+      width: 200px;
     }
   }
 }
@@ -38,9 +39,9 @@
 }
 
 .trashIcon:hover {
-  transform: rotateY(180deg) scale(1.2);
-  transition-duration: 0.2s;
-  opacity: 0.9;
+  transform: rotateY(360deg) scale(1.2);
+  transition-duration: 0.4s;
+  opacity: 1;
 }
 
 .userList {
@@ -65,13 +66,15 @@
       top: 5px;
     }
 
-    button:hover {
+    button:hover,
+    button:focus {
       cursor: pointer;
       transform: scale(1.1);
     }
   }
 
-  li:hover {
+  li:hover,
+  li:focus {
     transform: scale(1.1);
     cursor: pointer;
     transition-duration: 0.2s;

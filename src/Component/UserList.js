@@ -129,8 +129,8 @@ const UserList = ({ handleClick }) => {
               value={timeInput}
               className="timeChoiceDropDown"
             >
-              <option value="90">less than 90mins</option>
-              <option value="120">less than 120mins</option>
+              <option value="90">Less than 90mins</option>
+              <option value="120">About 2 Hours</option>
               <option value="1000">All the time in the world!</option>
             </select>
           </fieldset>
