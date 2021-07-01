@@ -8,8 +8,8 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 const UserList = ({ handleClick }) => {
   const movieListRef = firebase.database().ref();
   const [movieList, setMovieList] = useState();
-  const [genreInput, setGenreInput] = useState();
-  const [timeInput, setTimeInput] = useState();
+  const [genreInput, setGenreInput] = useState("allGenres");
+  const [timeInput, setTimeInput] = useState(90);
 
   const element = <FontAwesomeIcon icon={faTrashAlt} aria-hidden="true" className="trashIcon"/>;
 
@@ -31,11 +31,35 @@ const UserList = ({ handleClick }) => {
       }
       console.log(movieListArray);
       setMovieList(movieListArray);
+      
+      // const filteredList = movieListArray.filter((movie, index) => {
+      //   for (let i = 0; i < movie.name.genre.length; i++) {
+      //     if (
+      //       movie.name.length < timeInput &&
+      //       (movie.name.genre[i].name === genreInput ||
+      //         genreInput === "allGenres")
+      //     ) {
+      //       return movie;
+      //     } else {
+      //       return null;
+      //     }
+      //   }
+      //   return null;
+      // });
+
+      // setMovieList(filteredList);
+
+      // if (filteredList.length < 1) {
+      //   setMovieList(null);
+      // }
+
     });
 
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  
   const pickRandomMovie = (e) => {
     e.preventDefault();
     movieListRef.on("value", (response) => {
