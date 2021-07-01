@@ -1,38 +1,11 @@
 /* Modal */
 
-.closeElementIcon {
-  font-size: 3rem;
-  color: rgba(0, 0, 0, 0.5);
-  // border: 1px solid $primaryColor;
-}
-
-.closeElementIcon:hover {
-        color: rgba(0, 0, 0, 0.9);
-}
-
 
 
 .modalContainer {
-  position: relative;
-
-  button {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: transparent;
-    border: none;
-    transition: all 0.2s ease-in-out;
-    z-index: 1;
-    // background: transparent;
-  }
-
-  button:hover {
-    cursor: pointer;
-    transform: rotate(180deg) scale(1.1);
-    transition-duration: 0.2s;
-    // transform: rotate(270deg);
-
-  }
+  // position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 .modal {
@@ -45,17 +18,18 @@
   left: 0;
   z-index: 20;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   background: transparent;
   transition: all 0.4s ease;
 }
 
 .modal > div {
   background-color: $primaryColor;
-  opacity: 0.9;
-  border-radius: 50px;
-  width: 50vw;
-  height: 40vw;
+  // opacity: 0.9;
+  border-radius: 20px;
+  width: 90vw;
+  height: 100%;
+  padding: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,6 +37,7 @@
   position: absolute;
   top: 20px;
   border: 3px solid #000;
+  box-shadow: 4px 4px #000;
 }
 
 .modalTextContent {
@@ -76,13 +51,30 @@
   background: transparent;
   transition: all 0.4s ease;
   width: 50%;
-  height: 70%;
-  // border: 2px solid red;
-  // overflow: auto;
+  // height: 70%;
+}
+
+.closeElementIcon {
+  font-size: 3rem;
+  color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.closeElementIcon:hover {
+  color: rgba(0, 0, 0, 0.9);
+  cursor: pointer;
+  transform: rotate(180deg) scale(1.1);
+  transition-duration: 0.2s;
 }
 
 .modalImageContent {
-  height: 70%;
+  // height: 70%;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -90,7 +82,7 @@
   justify-content: center;
 
   img {
-    width: 80%;
+    width: 60%;
     display: block;
     margin-bottom: 40px;
   }
@@ -100,4 +92,17 @@
     width: 200px;
     cursor: pointer;
   }
+
+  h5 {
+    position: absolute;
+    font-size: 1.2rem;
+    color: red;
+    bottom: 30px;
+    opacity: 0.8;
+  }
+}
+
+.addButton {
+  position: absolute;
+  bottom: 20px;
 }

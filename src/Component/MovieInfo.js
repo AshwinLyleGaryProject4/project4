@@ -20,6 +20,10 @@ const MovieInfo = ({
       {movieInfoDetail ? (
         <div className="modal">
           <div className="modalContainer">
+            <button onClick={handleClose} className="closeElementButton">
+              {closeElement}
+              {/* <i class="fas fa-times-circle"></i> */}
+            </button>
             <div className="modalTextContent">
               <h3>{movieInfoDetail.title}</h3>
               <h4>
@@ -53,7 +57,11 @@ const MovieInfo = ({
                   height="30vh"
                 />
               ) : (
-                <h5><span>Sorry!<p>There's no YouTube link this movie!</p></span></h5>
+                <h5>
+                  <span>
+                    Sorry!<p>There's no YouTube link this movie!</p>
+                  </span>
+                </h5>
               )}
             </div>
 
@@ -69,13 +77,8 @@ const MovieInfo = ({
                 <div className="addButton">
                   <button onClick={handleAddToList}>Add to List</button>
                 </div>
-              ) : null}
+              ) : <h5>This movie has been added to your list!</h5>}
             </div>
-
-            <button onClick={handleClose} className="closeElementButton">
-              {closeElement}
-              {/* <i class="fas fa-times-circle"></i> */}
-            </button>
           </div>
         </div>
       ) : null}

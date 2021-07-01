@@ -103,6 +103,7 @@ const UserList = ({ handleClick }) => {
               <option value="Adventure">Adventure</option>
               <option value="Animation">Animation</option>
               <option value="Comedy">Comedy</option>
+              <option value="Crime">Crime</option>
               <option value="Drama">Drama</option>
               <option value="Documentary">Documentary</option>
               <option value="Family">Family</option>
@@ -111,6 +112,7 @@ const UserList = ({ handleClick }) => {
               <option value="Horror">Horror</option>
               <option value="Music">Music</option>
               <option value="Mystery">Mystery</option>
+              <option value="Romance">Romance</option>
               <option value="Science Fiction">Science Fiction</option>
               <option value="Thriller">Thriller</option>
               <option value="TV Movie">TV Movie</option>
