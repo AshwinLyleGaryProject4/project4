@@ -3,35 +3,31 @@ import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 import "../styles/App.scss";
 import firebase from "../config/firebase";
-
 import Footer from "./Footer";
-import UserList from "./UserList"
+import UserList from "./UserList";
 import MovieInfo from "./MovieInfo";
 import HeaderForm from "./HeaderForm";
 import UserSearchResult from "./UserSearchResult";
+import RandomMovieModal from "./RandomMovieModal";
+
 
 function App() {
   const [userSearchResults, setUserSearchResults] = useState();
-
   const [displayNaturalForm, setDisplayNaturalForm] = useState(false);
-
   // For Modal
-
   const [displayMovieInfo, setDisplayMovieInfo] = useState(false);
-
   const [movieInfoDetail, setMovieInfoDetail] = useState();
-
   const [director, setDirector] = useState();
   const [cast, setCast] = useState();
   const [youTube, setYouTube] = useState();
-
-  const [displayAddList, setDisplayAddList] = useState(false)
+  const [displayAddList, setDisplayAddList] = useState(true);
+  const [randomMovieSelection, setRandomMovieSelection] = useState();
+const [displayRandomMovieModal, setDisplayRandomMovieModal] = useState(false);
+const [randomMovieSelectionArray, setRandomMovieSelectionArray] = useState();
 
   // const [displayYouTube, setDisplayYouTube] = useState(false);
-
   const handleSearch = (event, userSearchInput) => {
     event.preventDefault();
-
     axios({
       method: `GET`,
       dataResponse: "json",
@@ -44,12 +40,13 @@ function App() {
         query: userSearchInput,
       },
     }).then((response) => {
-      setUserSearchResults(response.data.results);
-      console.log(response);
+      response.data.total_results !== 0
+        ? setUserSearchResults(response.data.results)
+        : alert(`It doesn't seem like ${userSearchInput} is a movie. Please try again`);
     });
-
     setDisplayNaturalForm(true);
   };
+
 
   // Opens Modal when clicked on images
   const handleClick = (movieID) => {
@@ -60,77 +57,111 @@ function App() {
       },
     }).then((result) => {
       console.log(result);
-
       setMovieInfoDetail(result.data);
-    });
-
-    axios({
-      url: `https://api.themoviedb.org/3/movie/${movieID}/videos`,
-      params: {
-        api_key: "9709355fc5ce17fa911605a13712678d",
-      },
-    }).then((result) => {
-      console.log(result);
-      // console.log(result.data.results[0].key);
-
-      // IF result.data.results[0].key exists (is true), THEN setYouTube link
-      if (result.data.results.length < 1) {
-        setYouTube(null)
-      } else {
-        setYouTube(result.data.results[0].key);
-      }
-    });
-
-    axios({
-      url: `https://api.themoviedb.org/3/movie/${movieID}/credits`,
-      params: {
-        api_key: "9709355fc5ce17fa911605a13712678d",
-      },
-    }).then((result) => {
-      console.log(result);
+      axios({
+        url: `https://api.themoviedb.org/3/movie/${movieID}/videos`,
+        params: {
+          api_key: "9709355fc5ce17fa911605a13712678d",
+        },
+      }).then((result) => {
+        console.log(result);
+        // console.log(result.data.results[0].key);
+        // IF result.data.results[0].key exists (is true), THEN setYouTube link
+        if (result.data.results.length < 1) {
+          setYouTube(null);
+        } else {
+          setYouTube(result.data.results[0].key);
+        }
+      });
+      axios({
+        url: `https://api.themoviedb.org/3/movie/${movieID}/credits`,
+        params: {
+          api_key: "9709355fc5ce17fa911605a13712678d",
+        },
+            }).then((result) => {
+      // console.log(result);
       const directorArray = result.data.crew.filter((crew) => {
         return crew.job === "Director";
       });
-      console.log(directorArray[0].name);
-
-      setDirector(directorArray[0].name);
-
+      // console.log(directorArray[0]);
+      directorArray.length !== 0
+      ? setDirector(directorArray[0].name)
+      : <h2>No Director Found</h2>
       setCast(result.data.cast.slice(0, 4));
     });
 
-    setDisplayMovieInfo(true);
+      // }).then((result) => {
+      //   console.log(result);
+      //   const directorArray = result.data.crew.filter((crew) => {
+      //     return crew.job === "Director";
+      //   });
+      //   console.log(directorArray[0].name);
+      //   setDirector(directorArray[0].name);
+      //   setCast(result.data.cast.slice(0, 4));
+      // });
+
+      const movieListRef = firebase.database().ref();
 
 
+      movieListRef.on("value", (response) => {
 
-    // console.log(movieListRef);
+        const movieListInfo = response.val();
 
-    // console.log(movieListRef.child())
+        const movieListArray = [];
 
-  //     const result = movieListRef.filter((movie) => {
-  //       if (movie.name.urlLink === postNum) {
-  //         return true;
-  //       } else {
-  //         return false;
-  //       }
-  //     });
+        for (let key in movieListInfo) {
+          movieListArray.unshift({
+            key: key,
+            name: movieListInfo[key],
+          });
+        }
 
-  // if () {
-  //   setDisplayAddList(true)
-  // } else {
-  //   setDisplayAddList(false)
-  // }
 
-    // setDisplayYouTube(true);
+        for (let i = 0; i < movieListArray.length; i++) {
+          if (movieListArray[i].name.id === result.data.id) {
+            setDisplayAddList(false);
+            break;
+          } else {
+            setDisplayAddList(true);
+          }
+        }
+      });
+
+      setDisplayMovieInfo(true);
+    });
   };
 
+  // Randomized pick
+    const randomPick = (movieList) => {
+      console.log(movieList);
+      setRandomMovieSelectionArray(movieList)
+      setRandomMovieSelection(
+        movieList[Math.floor(Math.random() * movieList.length)].name
+      );
+
+      setDisplayRandomMovieModal(true);
+
+    };
+
+    const pickAnotherRandom = () => {
+        setRandomMovieSelection(
+          randomMovieSelectionArray[
+            Math.floor(Math.random() * randomMovieSelectionArray.length)
+          ].name
+        );
+    }
+  
   const handleClose = () => {
     setDisplayMovieInfo(false);
+  };
+
+  const handleCloseRandomPick = () => {
+    setDisplayRandomMovieModal(false);
   };
 
   // console.log(movieInfoDetail)
 
   const handleAddToList = () => {
-
     // console.log(youTube);
 
     const movieListRef = firebase.database().ref();
@@ -141,18 +172,18 @@ function App() {
       genre: movieInfoDetail.genres,
       length: movieInfoDetail.runtime,
       id: movieInfoDetail.id,
-      poster_path: movieInfoDetail.poster_path
+      poster_path: movieInfoDetail.poster_path,
     });
-
-
-  }
+  };
   return (
     <Router>
       <div>
         <div className="wrapper">
           <HeaderForm handleSearch={handleSearch} />
 
-          <UserList handleClick={handleClick}/>
+          <UserList handleClick={handleClick} randomPick={randomPick}/>
+
+          {displayRandomMovieModal ? <RandomMovieModal randomMovieSelection={randomMovieSelection} handleClose={handleCloseRandomPick} pickAnotherRandom={pickAnotherRandom}/> : null}
 
           <UserSearchResult
             userSearchResults={userSearchResults}

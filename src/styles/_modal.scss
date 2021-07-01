@@ -1,0 +1,133 @@
+/* Modal */
+
+.modalContainer {
+  height: 100%;
+  width: 100%;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  width: 100vw;
+  height: 90vh;
+  background: transparent;
+  transition: all 0.4s ease;
+  
+}
+
+.modal > div {
+  background-color: $primaryColor;
+  // opacity: 0.5;
+  border-radius: 20px;
+  width: 90vw;
+  height: 100%;
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  position: absolute;
+  top: 20px;
+  border: 3px solid #000;
+  box-shadow: 4px 4px #000;
+}
+
+.modalRight {
+  width: 40%;
+}
+
+.modalLeft{
+  width: 60%;
+}
+
+.modalLeftBottom {
+  display: flex;
+  justify-content: space-around;
+
+  p {
+    margin: 2px 0;
+  }
+
+  h4 {
+    padding: 5px 0 0 0;
+  }
+}
+
+.modalLeftBottom>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.modalTextContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  padding: 20px;
+  position: relative;
+  background: transparent;
+  transition: all 0.4s ease;
+  width: 100%;
+}
+
+.modalImageContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 60%;
+    display: block;
+    margin-bottom: 40px;
+  }
+
+  button {
+    height: 50px;
+    width: 200px;
+    cursor: pointer;
+  }
+
+  h5 {
+    position: absolute;
+    font-size: 1.2rem;
+    color: red;
+    bottom: 30px;
+    opacity: 0.8;
+  }
+}
+
+.closeElementIcon {
+  font-size: 3rem;
+  color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.closeElementIcon:hover,
+.closeElementIcon:focus {
+  color: rgba(0, 0, 0, 0.9);
+  cursor: pointer;
+  transform: rotate(180deg) scale(1.1);
+  transition-duration: 0.2s;
+}
+
+.addButton {
+  position: absolute;
+  bottom: 20px;
+}
