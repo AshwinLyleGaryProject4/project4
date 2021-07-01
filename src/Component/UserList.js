@@ -11,6 +11,8 @@ const UserList = ({ handleClick, randomPick }) => {
   const [genreInput, setGenreInput] = useState("allGenres");
   const [timeInput, setTimeInput] = useState(90);
 const [displayRandomButton, setDisplayRandomButton] = useState(false);
+
+
   const element = <FontAwesomeIcon icon={faTrashAlt} aria-hidden="true" className="trashIcon"/>;
 
 
@@ -96,6 +98,7 @@ const [displayRandomButton, setDisplayRandomButton] = useState(false);
               pickRandomMovie(e);
             }}
           >
+            <h3>your <span>quick flick</span> picker</h3>
             <fieldset>
               <label htmlFor="genreChoice">I feel like watching a</label>
               <select
@@ -148,13 +151,13 @@ const [displayRandomButton, setDisplayRandomButton] = useState(false);
           </form>
 
           {displayRandomButton ? (
-            <button onClick={() => randomPick(movieList)}>
-              Still can't decide? We will pick a random movie for you!
+            <button onClick={() => randomPick(movieList)}> className="randomSelectionButton"
+              
             </button>
           ) : null}
 
           <div className="userList">
-            <h2>User List</h2>
+            <h2>My Movie List</h2>
 
             <ul>
               {movieList ? (

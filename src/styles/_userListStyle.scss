@@ -8,7 +8,7 @@
   margin-right: 30px;
   top: 0;
   right: 0;
-  z-index: 200;
+  z-index: 2200;
   visibility: visible;
 }
 
@@ -157,6 +157,25 @@
 
   // overflow: auto;
 
+  h3 {
+    color: rgb(58, 56, 56);
+    text-shadow: 4px 4px $primaryColor;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+    padding: 10px 0;
+    position: relative;
+    
+    span {
+          color: $primaryColor;
+text-shadow: 5px 5px 30px rgba(0,0,0,1);
+    letter-spacing: 1.5px;
+    font-weight: 800;
+    padding: 10px 5px;
+    position: relative;
+    // font-style: italic;
+    bottom: 5px;
+    }
+  }
   form {
     background: $tertiaryColor;
     padding: 20px 0;
@@ -193,6 +212,7 @@
 .userList {
   display: flex;
   background: $tertiaryColor;
+  // flex-direction: column;
   flex-wrap: wrap;
   width: 85%;
   margin: 20px 0;
@@ -201,13 +221,20 @@
   // overflow-y: scroll ;
   overflow-x: hidden;
   text-align: center;
-    box-shadow: 0 0 15px 10px rgba(0,0,0,0.7);
+  // border: 2px solid black;
+    box-shadow: 0 0 15px 10px rgba(0,0,0,0.4);
     justify-content: space-around;
     align-items: center;
 
     h2 {
       padding: 40px 0;
-      text-shadow: 0 0 10px  rgba(0,0,0,1);
+      text-shadow: 5px 5px 30px rgba(0,0,0,1);
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-weight: 700;
+      width: 100%;
+      font-size: 3rem;
+      color: $primaryColor;
       // opacity: 1;
     }
   
