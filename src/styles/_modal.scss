@@ -1,11 +1,13 @@
-
 /* Modal */
 
 .closeElementIcon {
   font-size: 3rem;
-  color: rgba(0,0,0,0.5);
+  color: rgba(0, 0, 0, 0.5);
   // border: 1px solid $primaryColor;
+}
 
+.closeElementIcon:hover {
+        color: rgba(0, 0, 0, 0.9);
 }
 
 
@@ -14,20 +16,22 @@
   position: relative;
 
   button {
-      position: absolute;
-  top: 15px;
-  right: 20px;
-  background: transparent;
-  border: none;
-  transition: all 0.2s ease-in-out;
-  z-index: 1;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    z-index: 1;
+    // background: transparent;
   }
 
   button:hover {
-    cursor: pointer; 
-    transform: rotate(540deg);
-      transition-duration: 0.2s;
+    cursor: pointer;
+    transform: rotate(180deg) scale(1.1);
+    transition-duration: 0.2s;
     // transform: rotate(270deg);
+
   }
 }
 
@@ -46,7 +50,7 @@
   transition: all 0.4s ease;
 }
 
-.modal>div {
+.modal > div {
   background-color: $primaryColor;
   opacity: 0.9;
   border-radius: 50px;
@@ -97,4 +101,3 @@
     cursor: pointer;
   }
 }
-

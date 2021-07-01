@@ -11,7 +11,7 @@ const UserList = ({ handleClick }) => {
   const [genreInput, setGenreInput] = useState();
   const [timeInput, setTimeInput] = useState();
 
-  const element = <FontAwesomeIcon icon={faTrashAlt} aria-hidden="true"/>;
+  const element = <FontAwesomeIcon icon={faTrashAlt} aria-hidden="true" className="trashIcon"/>;
 
 
   // Remove movie from list

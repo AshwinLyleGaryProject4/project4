@@ -1,7 +1,4 @@
-
 // User List Styling
-
-
 
 .userListContainer {
   background: $primaryColor;
@@ -9,7 +6,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 20px auto 100px ;
+  margin: 20px auto 100px;
   width: 75vw;
   height: 90%;
   border-radius: 20px;
@@ -23,17 +20,28 @@
     border: 3px solid #000;
     border-radius: 10px;
     margin: 20px 0;
-  
+
     select {
       margin: 0 8px;
     }
-  
+
     button {
       height: 40px;
     }
   }
 }
 
+.trashIcon {
+  font-size: 1.2rem;
+  transition: all 0.2s ease-in-out;
+  opacity: 0.7;
+}
+
+.trashIcon:hover {
+  transform: rotateY(180deg) scale(1.2);
+  transition-duration: 0.2s;
+  opacity: 0.9;
+}
 
 .userList {
   display: flex;
@@ -42,12 +50,32 @@
   justify-content: space-around;
   margin: 20px 0;
 
-  button {
-    // height: 100%;
-  }
-
   li {
     width: 15%;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    margin: 20px 0;
+
+    button {
+      position: absolute;
+      background: transparent;
+      color: $primaryColor;
+      border: none;
+      right: 5px;
+      top: 5px;
+    }
+
+    button:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+
+  li:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    transition-duration: 0.2s;
+    z-index: 5;
   }
 
   .movieListItem {
