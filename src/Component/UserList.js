@@ -98,7 +98,7 @@ const [displayRandomButton, setDisplayRandomButton] = useState(false);
               pickRandomMovie(e);
             }}
           >
-            <h3>your <span>quick flick</span> picker</h3>
+            <h3>Your <span>Quick Flick</span> Picker</h3>
             <fieldset>
               <label htmlFor="genreChoice">I feel like watching a</label>
               <select
@@ -151,8 +151,11 @@ const [displayRandomButton, setDisplayRandomButton] = useState(false);
           </form>
 
           {displayRandomButton ? (
-            <button onClick={() => randomPick(movieList)}> className="randomSelectionButton"
-              
+            <button
+              onClick={() => randomPick(movieList)}
+              className="randomSelectionButton"
+            >
+              Still can't decide? We will pick a random movie for you!
             </button>
           ) : null}
 
