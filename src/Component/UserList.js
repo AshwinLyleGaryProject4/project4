@@ -79,96 +79,108 @@ const UserList = ({ handleClick }) => {
     });
   };
   return (
-    <div className="userListContainer">
-      <h2>User List</h2>
-      <div>
-        {/* Native Language Form DO NOT DELETE */}
-        <form
-          onSubmit={(e) => {
-            pickRandomMovie(e);
-          }}
-        >
-          <fieldset>
-            <label htmlFor="genreChoice">I feel like watching a</label>
-            <select
-              name="genreChoice"
-              onChange={(event) => {
-                setGenreInput(event.target.value);
-              }}
-              value={genreInput}
-              className="genreChoiceDropDown"
-            >
-              <option value="allGenres">Whatever</option>
-              <option value="Action">Action</option>
-              <option value="Adventure">Adventure</option>
-              <option value="Animation">Animation</option>
-              <option value="Comedy">Comedy</option>
-              <option value="Crime">Crime</option>
-              <option value="Drama">Drama</option>
-              <option value="Documentary">Documentary</option>
-              <option value="Family">Family</option>
-              <option value="Fantasy">Fantasy</option>
-              <option value="History">History</option>
-              <option value="Horror">Horror</option>
-              <option value="Music">Music</option>
-              <option value="Mystery">Mystery</option>
-              <option value="Romance">Romance</option>
-              <option value="Science Fiction">Science Fiction</option>
-              <option value="Thriller">Thriller</option>
-              <option value="TV Movie">TV Movie</option>
-              <option value="War">War</option>
-              <option value="Western">Western</option>
-            </select>
-
-            <label htmlFor="timeChoice">movie, and I have</label>
-            <select
-              name="timeChoice"
-              onChange={(event) => {
-                setTimeInput(event.target.value);
-              }}
-              value={timeInput}
-              className="timeChoiceDropDown"
-            >
-              <option value="90">Less than 90mins</option>
-              <option value="120">About 2 Hours</option>
-              <option value="1000">All the time in the world!</option>
-            </select>
-          </fieldset>
-          <div>
-            <button type="submit">Filter Choices</button>
-          </div>
-        </form>
+    <div className="menu-wrap">
+      <input type="checkbox" className="toggler"></input>
+      <div className="hamburger">
+        <div></div>
       </div>
-      <ul className="userList">
-        {movieList ? (
-          movieList.map((movie, index) => {
-            return (
-              <li key={index} className="movieListItem">
-                {/* <p>{movie.name.title}</p> */}
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${movie.name.poster_path}`}
-                  alt={`Poster for ${movie.name.title}`}
-                  onClick={() => {
-                    handleClick(movie.name.id);
-                  }}
-                />
+      <div className="menu">
+        <div className="userListContainer">
+          {/* Native Language Form DO NOT DELETE */}
+          <form
+            onSubmit={(e) => {
+              pickRandomMovie(e);
+            }}
+          >
+            <fieldset>
+              <label htmlFor="genreChoice">I feel like watching a</label>
+              <select
+                name="genreChoice"
+                onChange={(event) => {
+                  setGenreInput(event.target.value);
+                }}
+                value={genreInput}
+                className="genreChoiceDropDown"
+              >
+                <option value="allGenres">Whatever</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Animation">Animation</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Crime">Crime</option>
+                <option value="Drama">Drama</option>
+                <option value="Documentary">Documentary</option>
+                <option value="Family">Family</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="History">History</option>
+                <option value="Horror">Horror</option>
+                <option value="Music">Music</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Romance">Romance</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="Thriller">Thriller</option>
+                <option value="TV Movie">TV Movie</option>
+                <option value="War">War</option>
+                <option value="Western">Western</option>
+              </select>
 
-                <button
-                  onClick={() => {
-                    handleRemoveMovie(movie.key);
-                  }}
-                >
-                  {/* <FontAwesomeIcon icon={["fas", "trash-alt"]} /> */}
-                  {/* <i class="fas fa-trash-alt"></i> */}
-                  {element}
-                </button>
-              </li>
-            );
-          })
-        ) : (
-          <div>No Movie to Display</div>
-        )}
-      </ul>
+              <label htmlFor="timeChoice">movie, and I have</label>
+              <select
+                name="timeChoice"
+                onChange={(event) => {
+                  setTimeInput(event.target.value);
+                }}
+                value={timeInput}
+                className="timeChoiceDropDown"
+              >
+                <option value="90">Less than 90mins</option>
+                <option value="120">About 2 Hours</option>
+                <option value="1000">All the time in the world!</option>
+              </select>
+            </fieldset>
+            <div>
+              <button type="submit">Filter Choices</button>
+            </div>
+          </form>
+
+          <div className="userList">
+            {/* <div> */}
+            <h2>User List</h2>
+
+            <ul>
+              {movieList ? (
+                movieList.map((movie, index) => {
+                  return (
+                    <li key={index} className="movieListItem">
+                      {/* <p>{movie.name.title}</p> */}
+                      <img
+                        src={`https://image.tmdb.org/t/p/w500${movie.name.poster_path}`}
+                        alt={`Poster for ${movie.name.title}`}
+                        onClick={() => {
+                          handleClick(movie.name.id);
+                        }}
+                      />
+
+                      <button
+                        onClick={() => {
+                          handleRemoveMovie(movie.key);
+                        }}
+                      >
+                        {/* <FontAwesomeIcon icon={["fas", "trash-alt"]} /> */}
+                        {/* <i class="fas fa-trash-alt"></i> */}
+                        {element}
+                      </button>
+                    </li>
+                  );
+                })
+              ) : (
+                <div>No Movie to Display</div>
+              )}
+            </ul>
+            {/* </div> */}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

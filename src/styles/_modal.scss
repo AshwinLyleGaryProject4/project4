@@ -12,7 +12,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 20;
+  z-index: 300;
   width: 100vw;
   height: 90vh;
   background: transparent;
@@ -21,6 +21,7 @@
 
 .modal > div {
   background-color: $primaryColor;
+  opacity: 1;
   border-radius: 20px;
   width: 90vw;
   height: 100%;
@@ -35,6 +36,35 @@
   box-shadow: 4px 4px #000;
 }
 
+.modalRight {
+  width: 40%;
+}
+
+.modalLeft{
+  width: 60%;
+}
+
+.modalLeftBottom {
+  display: flex;
+  justify-content: space-around;
+
+  p {
+    margin: 2px 0;
+  }
+
+  h4 {
+    padding: 5px 0 0 0;
+  }
+}
+
+.modalLeftBottom>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .modalTextContent {
   display: flex;
   flex-direction: column;
@@ -45,11 +75,11 @@
   position: relative;
   background: transparent;
   transition: all 0.4s ease;
-  width: 50%;
+  width: 100%;
 }
 
 .modalImageContent {
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
