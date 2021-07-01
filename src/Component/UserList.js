@@ -5,12 +5,12 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 
 
-const UserList = ({ handleClick }) => {
+const UserList = ({ handleClick, randomPick }) => {
   const movieListRef = firebase.database().ref();
   const [movieList, setMovieList] = useState();
   const [genreInput, setGenreInput] = useState("allGenres");
   const [timeInput, setTimeInput] = useState(90);
-
+const [displayRandomButton, setDisplayRandomButton] = useState(false);
   const element = <FontAwesomeIcon icon={faTrashAlt} aria-hidden="true" className="trashIcon"/>;
 
 
@@ -18,8 +18,10 @@ const UserList = ({ handleClick }) => {
   const handleRemoveMovie = (key) => {
     movieListRef.child(key).remove();
   };
+
+
   useEffect(() => {
-    // const movieListRef = firebase.database().ref();
+
     movieListRef.on("value", (response) => {
       const movieListInfo = response.val();
       const movieListArray = [];
@@ -29,32 +31,10 @@ const UserList = ({ handleClick }) => {
           name: movieListInfo[key],
         });
       }
-      console.log(movieListArray);
+
       setMovieList(movieListArray);
-      
-      // const filteredList = movieListArray.filter((movie, index) => {
-      //   for (let i = 0; i < movie.name.genre.length; i++) {
-      //     if (
-      //       movie.name.length < timeInput &&
-      //       (movie.name.genre[i].name === genreInput ||
-      //         genreInput === "allGenres")
-      //     ) {
-      //       return movie;
-      //     } else {
-      //       return null;
-      //     }
-      //   }
-      //   return null;
-      // });
-
-      // setMovieList(filteredList);
-
-      // if (filteredList.length < 1) {
-      //   setMovieList(null);
-      // }
 
     });
-
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -71,12 +51,9 @@ const UserList = ({ handleClick }) => {
           name: movieListInfo[key],
         });
       }
-      console.log(movieListArray);
+
       setMovieList(movieListArray);
-      console.log("test");
-      // console.log(movieList);
-      // console.log(movieList[0].name.genre[0].name)
-      // console.log(movieList[0].name.length)
+
       const filteredList = movieListArray.filter((movie, index) => {
         
         for (let i = 0; i < movie.name.genre.length; i++) {
@@ -96,13 +73,16 @@ const UserList = ({ handleClick }) => {
 
       setMovieList(filteredList);
 
+      setDisplayRandomButton(true)
 
       if (filteredList.length < 1) {
         setMovieList(null);
+        setDisplayRandomButton(false);
       }
     });
   };
   return (
+    // Checkbox useList pop-up modal menu
     <div className="menu-wrap">
       <input type="checkbox" className="toggler"></input>
       <div className="hamburger">
@@ -167,8 +147,13 @@ const UserList = ({ handleClick }) => {
             </div>
           </form>
 
+          {displayRandomButton ? (
+            <button onClick={() => randomPick(movieList)}>
+              Still can't decide? We will pick a random movie for you!
+            </button>
+          ) : null}
+
           <div className="userList">
-            {/* <div> */}
             <h2>User List</h2>
 
             <ul>
@@ -176,7 +161,6 @@ const UserList = ({ handleClick }) => {
                 movieList.map((movie, index) => {
                   return (
                     <li key={index} className="movieListItem">
-                      {/* <p>{movie.name.title}</p> */}
                       <img
                         src={`https://image.tmdb.org/t/p/w500${movie.name.poster_path}`}
                         alt={`Poster for ${movie.name.title}`}
@@ -190,8 +174,6 @@ const UserList = ({ handleClick }) => {
                           handleRemoveMovie(movie.key);
                         }}
                       >
-                        {/* <FontAwesomeIcon icon={["fas", "trash-alt"]} /> */}
-                        {/* <i class="fas fa-trash-alt"></i> */}
                         {element}
                       </button>
                     </li>
@@ -201,7 +183,6 @@ const UserList = ({ handleClick }) => {
                 <div>No Movie to Display</div>
               )}
             </ul>
-            {/* </div> */}
           </div>
         </div>
       </div>

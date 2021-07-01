@@ -8,6 +8,9 @@ import UserList from "./UserList";
 import MovieInfo from "./MovieInfo";
 import HeaderForm from "./HeaderForm";
 import UserSearchResult from "./UserSearchResult";
+import RandomMovieModal from "./RandomMovieModal";
+
+
 function App() {
   const [userSearchResults, setUserSearchResults] = useState();
   const [displayNaturalForm, setDisplayNaturalForm] = useState(false);
@@ -18,6 +21,9 @@ function App() {
   const [cast, setCast] = useState();
   const [youTube, setYouTube] = useState();
   const [displayAddList, setDisplayAddList] = useState(true);
+  const [randomMovieSelection, setRandomMovieSelection] = useState();
+const [displayRandomMovieModal, setDisplayRandomMovieModal] = useState(false);
+
   // const [displayYouTube, setDisplayYouTube] = useState(false);
   const handleSearch = (event, userSearchInput) => {
     event.preventDefault();
@@ -124,8 +130,23 @@ function App() {
     });
   };
 
+  // Randomized pick
+    const randomPick = (movieList) => {
+      console.log(movieList);
+      setRandomMovieSelection(
+        movieList[Math.floor(Math.random() * movieList.length)].name
+      );
+
+      setDisplayRandomMovieModal(true);
+    };
+
+  
   const handleClose = () => {
     setDisplayMovieInfo(false);
+  };
+
+  const handleCloseRandomPick = () => {
+    setDisplayRandomMovieModal(false);
   };
 
   // console.log(movieInfoDetail)
@@ -150,7 +171,9 @@ function App() {
         <div className="wrapper">
           <HeaderForm handleSearch={handleSearch} />
 
-          <UserList handleClick={handleClick} />
+          <UserList handleClick={handleClick} randomPick={randomPick}/>
+
+          {displayRandomMovieModal ? <RandomMovieModal randomMovieSelection={randomMovieSelection} handleClose={handleCloseRandomPick}/> : null}
 
           <UserSearchResult
             userSearchResults={userSearchResults}
