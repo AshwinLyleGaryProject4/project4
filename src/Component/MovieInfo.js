@@ -39,8 +39,8 @@ const MovieInfo = ({
                   <h4>
                     <strong>Cast:</strong>
                     {cast
-                      ? cast.map((castMember) => {
-                          return <span> {castMember.name} </span>;
+                      ? cast.map((castMember, index) => {
+                          return <span key={index}> {castMember.name} </span>;
                         })
                       : null}{" "}
                   </h4>
@@ -52,8 +52,8 @@ const MovieInfo = ({
                     <h4>
                       <strong> GENRE: </strong>
                     </h4>
-                    {movieInfoDetail.genres.map((genre) => {
-                      return <p>{genre.name}</p>
+                    {movieInfoDetail.genres.map((genre, index) => {
+                      return <p key={index}>{genre.name}</p>
                     })}
 
                     <h4>

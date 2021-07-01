@@ -23,6 +23,7 @@ function App() {
   const [displayAddList, setDisplayAddList] = useState(true);
   const [randomMovieSelection, setRandomMovieSelection] = useState();
 const [displayRandomMovieModal, setDisplayRandomMovieModal] = useState(false);
+const [randomMovieSelectionArray, setRandomMovieSelectionArray] = useState();
 
   // const [displayYouTube, setDisplayYouTube] = useState(false);
   const handleSearch = (event, userSearchInput) => {
@@ -133,13 +134,22 @@ const [displayRandomMovieModal, setDisplayRandomMovieModal] = useState(false);
   // Randomized pick
     const randomPick = (movieList) => {
       console.log(movieList);
+      setRandomMovieSelectionArray(movieList)
       setRandomMovieSelection(
         movieList[Math.floor(Math.random() * movieList.length)].name
       );
 
       setDisplayRandomMovieModal(true);
+
     };
 
+    const pickAnotherRandom = () => {
+        setRandomMovieSelection(
+          randomMovieSelectionArray[
+            Math.floor(Math.random() * randomMovieSelectionArray.length)
+          ].name
+        );
+    }
   
   const handleClose = () => {
     setDisplayMovieInfo(false);
@@ -173,7 +183,7 @@ const [displayRandomMovieModal, setDisplayRandomMovieModal] = useState(false);
 
           <UserList handleClick={handleClick} randomPick={randomPick}/>
 
-          {displayRandomMovieModal ? <RandomMovieModal randomMovieSelection={randomMovieSelection} handleClose={handleCloseRandomPick}/> : null}
+          {displayRandomMovieModal ? <RandomMovieModal randomMovieSelection={randomMovieSelection} handleClose={handleCloseRandomPick} pickAnotherRandom={pickAnotherRandom}/> : null}
 
           <UserSearchResult
             userSearchResults={userSearchResults}

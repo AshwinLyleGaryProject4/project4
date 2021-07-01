@@ -8,9 +8,9 @@ const UserSearchResult = ({userSearchResults, displayNaturalForm, handleClick}) 
 
         <ul className="resultContainer">
           {userSearchResults
-            ? userSearchResults.map((movie) => {
+            ? userSearchResults.map((movie, index) => {
                 return (
-                  <li>
+                  <li key={index}>
                     <div className="movieResult">
                       <div className="poster-image">
                         {movie.poster_path !== null ? (
