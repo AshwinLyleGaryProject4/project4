@@ -16,7 +16,7 @@ const RandomMovieModal = ({
   );
 
   return (
-    <div className="moviePage">
+    <div className="randomMoviePage">
       {randomMovieSelection ? (
         <div className="randomPickModal">
           <div className="randomPickModalContainer">
