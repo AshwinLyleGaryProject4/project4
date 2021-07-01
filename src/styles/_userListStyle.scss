@@ -53,19 +53,7 @@ text-shadow: 5px 5px 30px rgba(0,0,0,1);
   }
 }
 
-.trashIcon {
-  color: $primaryColor;
-  font-size: 1.2rem;
-  transition: all 0.2s ease-in-out;
-  opacity: 0.7;
-  // box-shadow: 0 0 5px 5px rgba(0,0,0,0.8)
-}
 
-.trashIcon:hover {
-  transform: rotateY(360deg) scale(1.2);
-  transition-duration: 0.4s;
-  opacity: 1;
-}
 
 .userList {
   display: flex;
