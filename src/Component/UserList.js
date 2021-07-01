@@ -98,23 +98,24 @@ const UserList = ({ handleClick }) => {
               value={genreInput}
               className="genreChoiceDropDown"
             >
-              {/* Action, Adventure, Animation, Comedy, Crime, Documentary, Drama,
-            Family, Fantasy, History, Horror, Music, Mystery, Romance, Science
-            Fiction, Thriller, TV Movie, War, and Western. */}
               <option value="allGenres">Whatever</option>
               <option value="Action">Action</option>
               <option value="Adventure">Adventure</option>
               <option value="Animation">Animation</option>
               <option value="Comedy">Comedy</option>
               <option value="Drama">Drama</option>
+              <option value="Documentary">Documentary</option>
+              <option value="Family">Family</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="History">History</option>
               <option value="Horror">Horror</option>
-              <option value="Romance">Romance</option>
-              <option value="Romance">Romance</option>
-              <option value="Romance">Romance</option>
-              <option value="Romance">Romance</option>
-              <option value="Romance">Romance</option>
-              <option value="Romance">Romance</option>
-              <option value="Romance">Romance</option>
+              <option value="Music">Music</option>
+              <option value="Mystery">Mystery</option>
+              <option value="Science Fiction">Science Fiction</option>
+              <option value="Thriller">Thriller</option>
+              <option value="TV Movie">TV Movie</option>
+              <option value="War">War</option>
+              <option value="Western">Western</option>
             </select>
 
             <label htmlFor="timeChoice">movie, and I have</label>
@@ -149,7 +150,7 @@ const UserList = ({ handleClick }) => {
                     handleClick(movie.name.id);
                   }}
                 />
-                
+
                 <button
                   onClick={() => {
                     handleRemoveMovie(movie.key);
