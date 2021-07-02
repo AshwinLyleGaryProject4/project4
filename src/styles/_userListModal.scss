@@ -55,28 +55,21 @@
   width: 60%;
 }
 
-.modalLeftBottom {
+
+.movieDetailsDiv {
   display: flex;
-  justify-content: space-around;
-
-  p {
-    margin: 2px 0;
-
-  }
-
-  h4 {
-    padding: 5px 0 0 0;
-  }
-}
-
-.modalLeftBottom>div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   height: 100%;
+  width: 100%;
+  justify-content: space-between;
 }
 
+.detailsSide {
+  
+  span {
+    display: flex;
+    flex-direction: column;
+  }
+}
 
 .modalTextContent {
   display: flex;
@@ -90,6 +83,13 @@
   transition: all 0.4s ease;
   width: 100%;
 
+  h3 {
+    font-size: 3.5rem;
+  }
+
+    p {
+      padding: 20px 0;
+    }
 }
 
 .modalImageContent {
@@ -115,8 +115,9 @@
     position: absolute;
     font-size: 1.2rem;
     color: red;
-    bottom: 30px;
+    bottom: 50px;
     opacity: 0.8;
+    padding: 0 30px;
   }
 }
 

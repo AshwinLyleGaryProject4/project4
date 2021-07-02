@@ -20,6 +20,7 @@ body {
 }
 
 
+
 header {
   background-color: #ABBEBA;
   padding: 30px 15px;
@@ -27,7 +28,9 @@ header {
 }
 
 
-/* img {
+img {
   display: block;
   max-width: 100%;
-} */
+}
+
+

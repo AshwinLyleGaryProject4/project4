@@ -30,54 +30,57 @@ const MovieInfo = ({
                   {closeElement}
                   {/* <i class="fas fa-times-circle"></i> */}
                 </button>
+
                 <div className="modalTextContent">
                   <h3>{movieInfoDetail.title}</h3>
                   <h4>
                     <strong>Directed by: </strong>
                     <span>{director}</span>
                   </h4>
-                  <h4>
-                    <strong>Cast:</strong>
-                    {cast
-                      ? cast.map((castMember, index) => {
-                          return <span key={index}> {castMember.name} </span>;
-                        })
-                      : null}{" "}
-                  </h4>
-                  {/* <h2>{movieInfoDetail.tagline}</h2> */}
                   <p>{movieInfoDetail.overview}</p>
-                </div>
-                <div className="modalLeftBottom">
-                  <div>
-                    <h4>
-                      <strong> GENRE: </strong>
-                    </h4>
-                    {movieInfoDetail.genres.map((genre, index) => {
-                      return <p key={index}>{genre.name}</p>
-                    })}
 
-                    <h4>
-                      <strong>Runtime: </strong>
-                      <span>{movieInfoDetail.runtime} mins</span>
-                    </h4>
+                  <div className="movieDetailsDiv">
+                    <div className="detailsSide">
+                      <h4>
+                        <strong> GENRE: </strong>
+                        {movieInfoDetail.genres.map((genre, index) => {
+                          return <span key={index}>{genre.name}</span>;
+                        })}
+                      </h4>
+                      <h4>
+                        <strong>Cast:</strong>
+                        {cast
+                          ? cast.map((castMember, index) => {
+                              return (
+                                <span key={index}> {castMember.name} </span>
+                              );
+                            })
+                          : null}
+                      </h4>
+                    </div>
+
+                    <div className="youTubeSide">
+                      {youTube ? (
+                        <ReactPlayer
+                          url={`https://www.youtube.com/watch?v=${youTube}`}
+                          width="25vw"
+                          height="30vh"
+                        />
+                      ) : (
+                        <h5>
+                          <span>Sorry! No YouTube Trailer Found.</span>
+                        </h5>
+                      )}
+                      <h4>
+                        <strong>Runtime: </strong>
+                        <span>{movieInfoDetail.runtime} mins</span>
+                      </h4>
+                    </div>
                   </div>
-                  {/* <span>Hello</span> */}
-                  {youTube ? (
-                    <ReactPlayer
-                      url={`https://www.youtube.com/watch?v=${youTube}`}
-                      width="20vw"
-                      height="30vh"
-                    />
-                  ) : (
-                    <h5>
-                      <span>
-                        Sorry!<p>There's no YouTube link this movie!</p>
-                      </span>
-                    </h5>
-                  )}
                 </div>
               </div>
             </div>
+
             <div className="modalRight">
               <div className="modalImageContent">
                 {/* <div className="poster-image"> */}
@@ -85,7 +88,6 @@ const MovieInfo = ({
                   src={`https://image.tmdb.org/t/p/w500${movieInfoDetail.poster_path}`}
                   alt={`Poster for ${movieInfoDetail.original_title}`}
                 />
-                {/* </div> */}
 
                 {displayAddList ? (
                   <div className="addButton">
@@ -94,6 +96,8 @@ const MovieInfo = ({
                 ) : (
                   <h5>This movie has been added to your list!</h5>
                 )}
+
+                {/* </div> */}
               </div>
             </div>
           </div>
