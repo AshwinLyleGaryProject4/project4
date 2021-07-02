@@ -1,18 +1,9 @@
 /* Results Container Styling */
 
-// .userList {
-//   width: 100%;
-// }
 
 .poster {
   display: flex;
-  // justify-content: center;
-  // align-items: center;
 }
-
-// .poster-image {
-//   width: 20vw;
-// }
 
 .resultContainer {
   display: flex;
@@ -20,16 +11,15 @@
   justify-content: center;
   margin-bottom: 80px;
 
-li {
+  li {
     margin: 6px;
-
-}
+  }
 
   img {
     width: 100%;
     display: block;
     outline: 1px solid black;
-        min-width: 300px;
+    min-width: 300px;
     max-height: 430px;
   }
   img:hover,
@@ -39,5 +29,4 @@ li {
     transition: all 0.2s ease-in-out;
     border: 5px solid $primaryColor;
   }
-
 }
