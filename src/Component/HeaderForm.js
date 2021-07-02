@@ -7,6 +7,7 @@ const HeaderForm = ({ handleSearch }) => {
   return (
     <header>
 
+
       <h1>
         Quick <span>Flick</span> Picker
       </h1>

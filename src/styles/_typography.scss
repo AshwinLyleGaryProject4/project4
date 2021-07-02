@@ -71,15 +71,7 @@ h1 {
 
 }
 
-h2 {
-  color: $secondaryColor;
-  padding-top: 5px;
-  font-size: 4rem;
-    font-size: 4rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
-}
+
 
 h3 {
   text-transform: uppercase;
@@ -104,14 +96,14 @@ h4 {
   }
 }
 
-h5 {
-  color: #E26822;
-  font-size: 1.5rem;
-  font-style: italic;
-  letter-spacing: 1.2px;
-  padding-top: 20px;
-  text-align: center;
-}
+// h5 {
+//   color: #E26822;
+//   font-size: 1.5rem;
+//   font-style: italic;
+//   letter-spacing: 1.2px;
+//   padding-top: 20px;
+//   text-align: center;
+// }
 
 p {
   font-family: $bodyFont;

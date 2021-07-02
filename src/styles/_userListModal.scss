@@ -12,11 +12,21 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 300;
+  z-index: 93000;
   width: 100vw;
   height: 90vh;
   background: transparent;
   transition: all 0.4s ease;
+
+  h2 {
+  color: $secondaryColor;
+  padding-top: 5px;
+  font-size: 4rem;
+    font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+}
   
 }
 
@@ -26,7 +36,7 @@
   border-radius: 20px;
   width: 90vw;
   height: 100%;
-  padding: 60px;
+  padding: 20px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,31 +55,26 @@
   width: 60%;
 }
 
-.modalLeftBottom {
+
+.movieDetailsDiv {
   display: flex;
-  justify-content: space-around;
-
-  p {
-    margin: 2px 0;
-  }
-
-  h4 {
-    padding: 5px 0 0 0;
-  }
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
 }
 
-.modalLeftBottom>div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.detailsSide {
+  
+  span {
+    display: flex;
+    flex-direction: column;
+  }
 }
-
 
 .modalTextContent {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   text-align: justify;
   padding: 20px;
@@ -77,6 +82,14 @@
   background: transparent;
   transition: all 0.4s ease;
   width: 100%;
+
+  h3 {
+    font-size: 3.5rem;
+  }
+
+    p {
+      padding: 20px 0;
+    }
 }
 
 .modalImageContent {
@@ -102,32 +115,10 @@
     position: absolute;
     font-size: 1.2rem;
     color: red;
-    bottom: 30px;
+    bottom: 50px;
     opacity: 0.8;
+    padding: 0 30px;
   }
 }
 
-.closeElementIcon {
-  font-size: 3rem;
-  color: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: transparent;
-  border: none;
-  transition: all 0.2s ease-in-out;
-  z-index: 1;
-}
 
-.closeElementIcon:hover,
-.closeElementIcon:focus {
-  color: rgba(0, 0, 0, 0.9);
-  cursor: pointer;
-  transform: rotate(180deg) scale(1.1);
-  transition-duration: 0.2s;
-}
-
-.addButton {
-  position: absolute;
-  bottom: 20px;
-}
