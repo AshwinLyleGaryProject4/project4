@@ -190,6 +190,15 @@
     form {
       justify-content: center;
       align-items: center;
+      width: 90%;
+      input {
+        height: 60px;
+        padding: 0 20px;
+      }
+
+      button {
+        height: 60px
+      }
     }
 
 
@@ -334,3 +343,42 @@
   }
 }
 
+
+
+// 414px STYLING
+
+@media (max-width: 414px) {
+
+  h1 {
+    padding-top: 40px;
+  }
+
+  .movieList {
+
+    ul {
+      padding-left: 0;
+
+      li {
+        width: 47%;
+        margin: 5px;
+      }
+    }
+  }
+
+  .randomPickModalContainer {
+    padding: 10px;
+  }
+
+  .randomPickModal img {
+    width: 95%;
+}
+
+.modalRight {
+  width: 50%;
+  height: 100%;
+}
+
+.addButton {
+  margin-bottom: 370px;
+}
+}
