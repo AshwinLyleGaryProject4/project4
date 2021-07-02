@@ -382,3 +382,22 @@
   margin-bottom: 370px;
 }
 }
+
+
+// 380px STYLING
+
+@media (max-width:380px) {
+
+  .modalTextContent  {
+
+    h3{
+    font-size: 1.4rem;
+    padding-top: 0;
+}
+  }
+
+  footer {
+    font-size: 0.8rem;
+  }
+
+}
