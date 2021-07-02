@@ -396,6 +396,35 @@
 }
   }
 
+  .modalImageContent {
+    
+    width: 80%;
+
+    h5 {
+    margin-bottom: 260px;
+    padding-left: 50px;
+    }
+}
+
+.menu-wrap .menu > div {
+  height: 110vh;
+}
+
+.userListContainer {
+    padding-top: 0;
+    // height: 110vh;
+}
+
+.movieListHeader {
+    min-height: 45%;
+
+
+    h2 {
+      padding-left: 10px;
+    }
+}
+
+
   footer {
     font-size: 0.8rem;
   }
