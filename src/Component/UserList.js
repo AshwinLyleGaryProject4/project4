@@ -155,7 +155,7 @@ const [displayRandomButton, setDisplayRandomButton] = useState(false);
               onClick={() => randomPick(movieList)}
               className="randomSelectionButton"
             >
-              Still can't decide? We will pick a random movie for you!
+              Random Quick Pick
             </button>
           ) : null}
 

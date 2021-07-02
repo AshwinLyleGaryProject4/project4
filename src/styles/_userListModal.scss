@@ -36,7 +36,7 @@
   border-radius: 20px;
   width: 90vw;
   height: 100%;
-  padding: 60px;
+  padding: 20px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,6 +61,7 @@
 
   p {
     margin: 2px 0;
+
   }
 
   h4 {
@@ -73,13 +74,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 
 .modalTextContent {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   text-align: justify;
   padding: 20px;
@@ -87,6 +89,7 @@
   background: transparent;
   transition: all 0.4s ease;
   width: 100%;
+
 }
 
 .modalImageContent {
