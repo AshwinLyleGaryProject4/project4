@@ -3,27 +3,26 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-
-
 const UserList = ({ handleClick, randomPick }) => {
   const movieListRef = firebase.database().ref();
   const [movieList, setMovieList] = useState();
   const [genreInput, setGenreInput] = useState("allGenres");
   const [timeInput, setTimeInput] = useState(90);
-const [displayRandomButton, setDisplayRandomButton] = useState(false);
+  const [displayRandomButton, setDisplayRandomButton] = useState(false);
 
+  const element = (
+    <FontAwesomeIcon
+      icon={faTrashAlt}
+      aria-hidden="true"
+      className="trashIcon"
+    />
+  );
 
-  const element = <FontAwesomeIcon icon={faTrashAlt} aria-hidden="true" className="trashIcon"/>;
-
-
-  // Remove movie from list
   const handleRemoveMovie = (key) => {
     movieListRef.child(key).remove();
   };
 
-
   useEffect(() => {
-
     movieListRef.on("value", (response) => {
       const movieListInfo = response.val();
       const movieListArray = [];
@@ -35,13 +34,11 @@ const [displayRandomButton, setDisplayRandomButton] = useState(false);
       }
 
       setMovieList(movieListArray);
-
     });
-    
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  
   const pickRandomMovie = (e) => {
     e.preventDefault();
     movieListRef.on("value", (response) => {
@@ -57,25 +54,23 @@ const [displayRandomButton, setDisplayRandomButton] = useState(false);
       setMovieList(movieListArray);
 
       const filteredList = movieListArray.filter((movie, index) => {
-        
         for (let i = 0; i < movie.name.genre.length; i++) {
           if (
             movie.name.length < timeInput &&
             (movie.name.genre[i].name === genreInput ||
-            genreInput === "allGenres")
+              genreInput === "allGenres")
           ) {
             return movie;
-          }
-          else {
+          } else {
             return null;
           }
         }
-        return null
+        return null;
       });
 
       setMovieList(filteredList);
 
-      setDisplayRandomButton(true)
+      setDisplayRandomButton(true);
 
       if (filteredList.length < 1) {
         setMovieList(null);
@@ -84,7 +79,6 @@ const [displayRandomButton, setDisplayRandomButton] = useState(false);
     });
   };
   return (
-    // Checkbox useList pop-up modal menu
     <div className="menu-wrap">
       <input type="checkbox" className="toggler"></input>
       <div className="hamburger">
@@ -168,33 +162,35 @@ const [displayRandomButton, setDisplayRandomButton] = useState(false);
                 </button>
               ) : null}
             </div>
-            <ul>
-              {movieList ? (
-                movieList.map((movie, index) => {
-                  return (
-                    <li key={index} className="movieListItem">
-                      <img
-                        src={`https://image.tmdb.org/t/p/w500${movie.name.poster_path}`}
-                        alt={`Poster for ${movie.name.title}`}
-                        onClick={() => {
-                          handleClick(movie.name.id);
-                        }}
-                      />
+            <div className="movieList">
+              <ul>
+                {movieList ? (
+                  movieList.map((movie, index) => {
+                    return (
+                      <li key={index} className="movieListItem">
+                        <img
+                          src={`https://image.tmdb.org/t/p/w500${movie.name.poster_path}`}
+                          alt={`Poster for ${movie.name.title}`}
+                          onClick={() => {
+                            handleClick(movie.name.id);
+                          }}
+                        />
 
-                      <button
-                        onClick={() => {
-                          handleRemoveMovie(movie.key);
-                        }}
-                      >
-                        {element}
-                      </button>
-                    </li>
-                  );
-                })
-              ) : (
-                <div>No Movie to Display</div>
-              )}
-            </ul>
+                        <button
+                          onClick={() => {
+                            handleRemoveMovie(movie.key);
+                          }}
+                        >
+                          {element}
+                        </button>
+                      </li>
+                    );
+                  })
+                ) : (
+                  <div>No Movie to Display</div>
+                )}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

@@ -10,7 +10,6 @@ import HeaderForm from "./HeaderForm";
 import UserSearchResult from "./UserSearchResult";
 import RandomMovieModal from "./RandomMovieModal";
 
-
 function App() {
   const [userSearchResults, setUserSearchResults] = useState();
   const [displayNaturalForm, setDisplayNaturalForm] = useState(false);
@@ -22,10 +21,9 @@ function App() {
   const [youTube, setYouTube] = useState();
   const [displayAddList, setDisplayAddList] = useState(true);
   const [randomMovieSelection, setRandomMovieSelection] = useState();
-const [displayRandomMovieModal, setDisplayRandomMovieModal] = useState(false);
-const [randomMovieSelectionArray, setRandomMovieSelectionArray] = useState();
+  const [displayRandomMovieModal, setDisplayRandomMovieModal] = useState(false);
+  const [randomMovieSelectionArray, setRandomMovieSelectionArray] = useState();
 
-  // const [displayYouTube, setDisplayYouTube] = useState(false);
   const handleSearch = (event, userSearchInput) => {
     event.preventDefault();
     axios({
@@ -42,11 +40,12 @@ const [randomMovieSelectionArray, setRandomMovieSelectionArray] = useState();
     }).then((response) => {
       response.data.total_results !== 0
         ? setUserSearchResults(response.data.results)
-        : alert(`It doesn't seem like ${userSearchInput} is a movie. Please try again`);
+        : alert(
+            `It doesn't seem like ${userSearchInput} is a movie. Please try again`
+          );
     });
     setDisplayNaturalForm(true);
   };
-
 
   // Opens Modal when clicked on images
   const handleClick = (movieID) => {
@@ -56,7 +55,6 @@ const [randomMovieSelectionArray, setRandomMovieSelectionArray] = useState();
         api_key: "9709355fc5ce17fa911605a13712678d",
       },
     }).then((result) => {
-      console.log(result);
       setMovieInfoDetail(result.data);
       axios({
         url: `https://api.themoviedb.org/3/movie/${movieID}/videos`,
@@ -64,9 +62,6 @@ const [randomMovieSelectionArray, setRandomMovieSelectionArray] = useState();
           api_key: "9709355fc5ce17fa911605a13712678d",
         },
       }).then((result) => {
-        console.log(result);
-        // console.log(result.data.results[0].key);
-        // IF result.data.results[0].key exists (is true), THEN setYouTube link
         if (result.data.results.length < 1) {
           setYouTube(null);
         } else {
@@ -78,33 +73,22 @@ const [randomMovieSelectionArray, setRandomMovieSelectionArray] = useState();
         params: {
           api_key: "9709355fc5ce17fa911605a13712678d",
         },
-            }).then((result) => {
-      // console.log(result);
-      const directorArray = result.data.crew.filter((crew) => {
-        return crew.job === "Director";
-      });
-      // console.log(directorArray[0]);
-      directorArray.length !== 0
-      ? setDirector(directorArray[0].name)
-      : <h2>No Director Found</h2>
-      setCast(result.data.cast.slice(0, 4));
-    });
+      }).then((result) => {
+        const directorArray = result.data.crew.filter((crew) => {
+          return crew.job === "Director";
+        });
 
-      // }).then((result) => {
-      //   console.log(result);
-      //   const directorArray = result.data.crew.filter((crew) => {
-      //     return crew.job === "Director";
-      //   });
-      //   console.log(directorArray[0].name);
-      //   setDirector(directorArray[0].name);
-      //   setCast(result.data.cast.slice(0, 4));
-      // });
+        directorArray.length !== 0 ? (
+          setDirector(directorArray[0].name)
+        ) : (
+          <h2>No Director Found</h2>
+        );
+        setCast(result.data.cast.slice(0, 4));
+      });
 
       const movieListRef = firebase.database().ref();
 
-
       movieListRef.on("value", (response) => {
-
         const movieListInfo = response.val();
 
         const movieListArray = [];
@@ -115,7 +99,6 @@ const [randomMovieSelectionArray, setRandomMovieSelectionArray] = useState();
             name: movieListInfo[key],
           });
         }
-
 
         for (let i = 0; i < movieListArray.length; i++) {
           if (movieListArray[i].name.id === result.data.id) {
@@ -132,25 +115,23 @@ const [randomMovieSelectionArray, setRandomMovieSelectionArray] = useState();
   };
 
   // Randomized pick
-    const randomPick = (movieList) => {
-      console.log(movieList);
-      setRandomMovieSelectionArray(movieList)
-      setRandomMovieSelection(
-        movieList[Math.floor(Math.random() * movieList.length)].name
-      );
+  const randomPick = (movieList) => {
+    setRandomMovieSelectionArray(movieList);
+    setRandomMovieSelection(
+      movieList[Math.floor(Math.random() * movieList.length)].name
+    );
 
-      setDisplayRandomMovieModal(true);
+    setDisplayRandomMovieModal(true);
+  };
 
-    };
+  const pickAnotherRandom = () => {
+    setRandomMovieSelection(
+      randomMovieSelectionArray[
+        Math.floor(Math.random() * randomMovieSelectionArray.length)
+      ].name
+    );
+  };
 
-    const pickAnotherRandom = () => {
-        setRandomMovieSelection(
-          randomMovieSelectionArray[
-            Math.floor(Math.random() * randomMovieSelectionArray.length)
-          ].name
-        );
-    }
-  
   const handleClose = () => {
     setDisplayMovieInfo(false);
   };
@@ -159,11 +140,7 @@ const [randomMovieSelectionArray, setRandomMovieSelectionArray] = useState();
     setDisplayRandomMovieModal(false);
   };
 
-  // console.log(movieInfoDetail)
-
   const handleAddToList = () => {
-    // console.log(youTube);
-
     const movieListRef = firebase.database().ref();
 
     const movieListInfo = movieListRef;
@@ -181,9 +158,15 @@ const [randomMovieSelectionArray, setRandomMovieSelectionArray] = useState();
         <div className="wrapper">
           <HeaderForm handleSearch={handleSearch} />
 
-          <UserList handleClick={handleClick} randomPick={randomPick}/>
+          <UserList handleClick={handleClick} randomPick={randomPick} />
 
-          {displayRandomMovieModal ? <RandomMovieModal randomMovieSelection={randomMovieSelection} handleClose={handleCloseRandomPick} pickAnotherRandom={pickAnotherRandom}/> : null}
+          {displayRandomMovieModal ? (
+            <RandomMovieModal
+              randomMovieSelection={randomMovieSelection}
+              handleClose={handleCloseRandomPick}
+              pickAnotherRandom={pickAnotherRandom}
+            />
+          ) : null}
 
           <UserSearchResult
             userSearchResults={userSearchResults}
@@ -191,7 +174,6 @@ const [randomMovieSelectionArray, setRandomMovieSelectionArray] = useState();
             handleClick={handleClick}
           />
 
-          {/* Modal for each movie parameters */}
           {displayMovieInfo ? (
             <MovieInfo
               movieInfoDetail={movieInfoDetail}
@@ -199,7 +181,6 @@ const [randomMovieSelectionArray, setRandomMovieSelectionArray] = useState();
               director={director}
               cast={cast}
               youTube={youTube}
-              // displayYouTube={displayYouTube}
               handleAddToList={handleAddToList}
               displayAddList={displayAddList}
             />
