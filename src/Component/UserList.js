@@ -168,33 +168,35 @@ const [displayRandomButton, setDisplayRandomButton] = useState(false);
                 </button>
               ) : null}
             </div>
-            <ul>
-              {movieList ? (
-                movieList.map((movie, index) => {
-                  return (
-                    <li key={index} className="movieListItem">
-                      <img
-                        src={`https://image.tmdb.org/t/p/w500${movie.name.poster_path}`}
-                        alt={`Poster for ${movie.name.title}`}
-                        onClick={() => {
-                          handleClick(movie.name.id);
-                        }}
-                      />
+            <div className="movieList">
+              <ul>
+                {movieList ? (
+                  movieList.map((movie, index) => {
+                    return (
+                      <li key={index} className="movieListItem">
+                        <img
+                          src={`https://image.tmdb.org/t/p/w500${movie.name.poster_path}`}
+                          alt={`Poster for ${movie.name.title}`}
+                          onClick={() => {
+                            handleClick(movie.name.id);
+                          }}
+                        />
 
-                      <button
-                        onClick={() => {
-                          handleRemoveMovie(movie.key);
-                        }}
-                      >
-                        {element}
-                      </button>
-                    </li>
-                  );
-                })
-              ) : (
-                <div>No Movie to Display</div>
-              )}
-            </ul>
+                        <button
+                          onClick={() => {
+                            handleRemoveMovie(movie.key);
+                          }}
+                        >
+                          {element}
+                        </button>
+                      </li>
+                    );
+                  })
+                ) : (
+                  <div>No Movie to Display</div>
+                )}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

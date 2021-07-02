@@ -1,8 +1,8 @@
 /* Results Container Styling */
 
-.userList {
-  width: 100%;
-}
+// .userList {
+//   width: 100%;
+// }
 
 .poster {
   display: flex;
@@ -20,14 +20,17 @@
   justify-content: center;
   margin-bottom: 80px;
 
-  li {
-    padding: 5px;
-  }
+li {
+    margin: 5px;
+
+}
 
   img {
     width: 100%;
     display: block;
     outline: 1px solid black;
+        min-width: 220px;
+    max-height: 430px;
   }
   img:hover,
   img:focus {

@@ -110,15 +110,15 @@
 .menu-wrap .menu > div {
   background-color: $primaryColor;
   opacity: 1;
-  width: 90vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   transform: scale(0);
   transition: all 0.4s ease;
-  text-align: center;
-  box-shadow: 0 0 15px 20px rgba(0, 0, 0, 0.5);
+  // text-align: center;
+  box-shadow: 0 0 105px 100px rgba(0, 0, 0, 0.5);
 }
 
 .menu-wrap .menu-wrap > div > div {
