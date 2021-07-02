@@ -1,13 +1,10 @@
 import { useState } from "react";
 
-
 const HeaderForm = ({ handleSearch }) => {
   const [userSearchInput, setUserSearchInput] = useState("");
 
   return (
     <header>
-
-
       <h1>
         Quick <span>Flick</span> Picker
       </h1>
@@ -29,7 +26,8 @@ const HeaderForm = ({ handleSearch }) => {
             type="text"
             name="searchBar"
             id="searchBar"
-            placeholder="Search" required
+            placeholder="Search"
+            required
           />
           <button type="submit">Search</button>
         </form>

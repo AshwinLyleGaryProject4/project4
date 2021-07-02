@@ -28,7 +28,6 @@ const MovieInfo = ({
               <div className="modalLeftTop">
                 <button onClick={handleClose} className="closeElementButton">
                   {closeElement}
-                  {/* <i class="fas fa-times-circle"></i> */}
                 </button>
 
                 <div className="modalTextContent">
@@ -83,7 +82,6 @@ const MovieInfo = ({
 
             <div className="modalRight">
               <div className="modalImageContent">
-                {/* <div className="poster-image"> */}
                 <img
                   src={`https://image.tmdb.org/t/p/w500${movieInfoDetail.poster_path}`}
                   alt={`Poster for ${movieInfoDetail.original_title}`}
@@ -96,8 +94,6 @@ const MovieInfo = ({
                 ) : (
                   <h5>This movie has been added to your list!</h5>
                 )}
-
-                {/* </div> */}
               </div>
             </div>
           </div>
