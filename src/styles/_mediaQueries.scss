@@ -430,3 +430,41 @@
   }
 
 }
+
+// 320px STYLING
+
+@media (max-width: 320px) {
+
+  .movieList {
+
+    ul{
+
+      li {
+    width: 45%;
+        img {
+
+          width: 50%;
+          min-width: 135px;
+
+        }
+      }
+      }
+
+}
+
+.modalImageContent {
+    width: 100%;
+    margin-bottom: 30px;
+
+    h5 {
+    margin-bottom: 260px;
+    padding-left: 0px;
+}
+
+    img {
+      margin-bottom: 60px;
+    }
+}
+
+
+}
