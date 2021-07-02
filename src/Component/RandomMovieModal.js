@@ -33,7 +33,8 @@ const RandomMovieModal = ({
                   alt={`Poster for ${randomMovieSelection.original_title}`}
                 />
 
-                <button>Play Your Selection!</button>  <button onClick={pickAnotherRandom}>Choose Again</button>
+                <button className="playButton">Play Your Selection!</button>  
+                <button onClick={pickAnotherRandom} className="chooseAgainButton">Choose Again</button>
 
             </div>
           </div>
