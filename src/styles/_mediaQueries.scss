@@ -36,7 +36,7 @@
 
     li {
 
-      width: 23%;
+      width: 22%;
 
       img {
 
@@ -396,6 +396,23 @@
 }
   }
 
+    .movieList {
+
+    ul{
+
+      li {
+    width: 44%;
+        img {
+
+          width: 50%;
+          min-width: 135px;
+
+        }
+      }
+      }
+
+}
+
   .modalImageContent {
     
     width: 80%;
@@ -458,13 +475,11 @@
 
     h5 {
     margin-bottom: 260px;
-    padding-left: 0px;
+    padding-left: 80px;
 }
 
     img {
       margin-bottom: 60px;
     }
 }
-
-
 }
