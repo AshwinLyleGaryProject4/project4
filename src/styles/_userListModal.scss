@@ -18,6 +18,16 @@
   background: transparent;
   transition: all 0.4s ease;
   
+  h2 {
+  color: $secondaryColor;
+  padding-top: 5px;
+  font-size: 4rem;
+    font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+}
+  
 }
 
 .modal > div {
