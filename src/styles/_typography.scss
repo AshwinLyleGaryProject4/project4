@@ -27,6 +27,20 @@ header {
   text-align: center;
   text-transform: uppercase;
   height: 85%;
+  letter-spacing: 1.5px;
+
+  h2 {
+    padding: 30px 0 50px 0;
+    font-size: 1.3rem;
+    line-height: 1.8;
+
+
+    span {
+      font-family: $headerFont;
+      font-weight: 800;
+      font-size: 1.6rem;
+    }
+  }
 
   form {
     display: flex;
