@@ -3,27 +3,27 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
+
+
 const UserList = ({ handleClick, randomPick }) => {
   const movieListRef = firebase.database().ref();
   const [movieList, setMovieList] = useState();
   const [genreInput, setGenreInput] = useState("allGenres");
   const [timeInput, setTimeInput] = useState(90);
-  const [displayRandomButton, setDisplayRandomButton] = useState(false);
+const [displayRandomButton, setDisplayRandomButton] = useState(false);
 
-  const element = (
-    <FontAwesomeIcon
-      icon={faTrashAlt}
-      aria-hidden="true"
-      className="trashIcon"
-    />
-  );
+
+  const element = <FontAwesomeIcon icon={faTrashAlt} aria-hidden="true" className="trashIcon"/>;
+
 
   // Remove movie from list
   const handleRemoveMovie = (key) => {
     movieListRef.child(key).remove();
   };
 
+
   useEffect(() => {
+
     movieListRef.on("value", (response) => {
       const movieListInfo = response.val();
       const movieListArray = [];
@@ -35,11 +35,13 @@ const UserList = ({ handleClick, randomPick }) => {
       }
 
       setMovieList(movieListArray);
-    });
 
+    });
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  
   const pickRandomMovie = (e) => {
     e.preventDefault();
     movieListRef.on("value", (response) => {
@@ -55,23 +57,25 @@ const UserList = ({ handleClick, randomPick }) => {
       setMovieList(movieListArray);
 
       const filteredList = movieListArray.filter((movie, index) => {
+        
         for (let i = 0; i < movie.name.genre.length; i++) {
           if (
             movie.name.length < timeInput &&
             (movie.name.genre[i].name === genreInput ||
-              genreInput === "allGenres")
+            genreInput === "allGenres")
           ) {
             return movie;
-          } else {
+          }
+          else {
             return null;
           }
         }
-        return null;
+        return null
       });
 
       setMovieList(filteredList);
 
-      setDisplayRandomButton(true);
+      setDisplayRandomButton(true)
 
       if (filteredList.length < 1) {
         setMovieList(null);
@@ -95,7 +99,11 @@ const UserList = ({ handleClick, randomPick }) => {
             }}
           >
             <h3>
-              Your <span>Quick Flick</span> Picker
+              Your
+              <p>
+                <span>Quick Flick</span>
+              </p>
+              Picker
             </h3>
             <fieldset>
               <label htmlFor="genreChoice">I feel like watching a</label>
