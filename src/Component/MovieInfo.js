@@ -63,8 +63,8 @@ const MovieInfo = ({
                       {youTube ? (
                         <ReactPlayer
                           url={`https://www.youtube.com/watch?v=${youTube}`}
-                          width="25vw"
-                          height="30vh"
+                          width="100%"
+                          height="100%"
                         />
                       ) : (
                         <h5>

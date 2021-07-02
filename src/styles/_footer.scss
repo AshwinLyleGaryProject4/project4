@@ -55,23 +55,3 @@ footer {
 
 }
 
-@media (max-width: 480px) {
-
-  .userList {
-    ul {
-      li {
-        width: 25%;
-      }
-    }
-  }
-
-  footer {
-    font-size: 0.8rem;
-}
-}
-
-@media (max-width:380px) {
-    footer {
-      font-size: 0.7rem;
-    }
-}

@@ -1,12 +1,12 @@
-@media (max-height: 1000px) {
-  .modalTextContent {
-    h3 {
-      font-size: 2rem;
-      text-align: left;
-      letter-spacing: 1.5px;
-    }
-  }
-}
+// @media (max-height: 1000px) {
+//   .modalTextContent {
+//     h3 {
+//       font-size: 2rem;
+//       text-align: left;
+//       letter-spacing: 1.5px;
+//     }
+//   }
+// }
 
 
 
@@ -117,15 +117,17 @@
       width: 38%;
     }
   }
-}
+
 
 .movieDetailsDiv {
     flex-direction: column;
 
-    .youTubeSide {
+ 
+}
+
+   .youTubeSide {
         display: none;
     }
-}
 
    .modalLeft {
         width: 90%;
@@ -157,6 +159,8 @@
         width: 110%;
     }
 }
+}
+
 
 @media (max-width: 380px) {
   header {
