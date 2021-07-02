@@ -78,3 +78,28 @@ color: $primaryColor;
       padding:0;
     border:none;
   }
+
+
+  .playButton {
+    margin: 20px 0;
+    // height: 100px;
+    background: rgb(13, 151, 13);
+    font-size: 1.3rem;
+    width: 300px;
+    padding: 10px 10px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    outline: 1px solid #000;
+  }
+
+  .playButton:hover {
+    background: rgb(18, 209, 18);
+    // color: $primaryColor;
+  }
+
+  .chooseAgainButton {
+    height: 30px;
+    width: 150px;
+  }

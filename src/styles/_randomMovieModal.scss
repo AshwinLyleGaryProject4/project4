@@ -19,11 +19,15 @@
   height: 90vh;
   background: transparent;
   transition: all 0.4s ease;
+  // position: relative;
+
+
   
   img {
-    width: 50%;
+    width: 60%;
     display: block;
-    margin-bottom: 40px;
+    // margin-bottom: 40px;
+    outline: 1px solid #000;
   }
 }
 
