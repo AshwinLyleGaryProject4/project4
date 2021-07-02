@@ -1,25 +1,18 @@
-// @media (max-height: 1000px) {
-//   .modalTextContent {
-//     h3 {
-//       font-size: 2rem;
-//       text-align: left;
-//       letter-spacing: 1.5px;
-//     }
-//   }
-// }
-
-
-
-
-
-
+@media (max-height: 1000px) {
+  .modalTextContent {
+    h3 {
+      font-size: 2rem;
+      text-align: left;
+      letter-spacing: 1.5px;
+    }
+  }
+}
 
 @media (max-width: 480px) {
+  .modal > div {
+    padding: 0;
+  }
 
-    .modal>div {
-        padding: 0;
-    }
-    
   header {
     form {
       width: 80%;
@@ -31,85 +24,77 @@
   }
 
   .modalImageContent {
-
     width: 120%;
 
-      h5 {
-          padding: 0;
-          margin-bottom: 240px;
-          margin-left: 100px;
+    h5 {
+      padding: 0;
+      margin-bottom: 240px;
+      margin-left: 100px;
+    }
 
-      }
-
-      img {
-        margin-bottom: 15px;
-        width: 100%
-      }
+    img {
+      margin-bottom: 15px;
+      width: 100%;
+    }
   }
 
   .poster-image {
-      width: 35vw;
+    width: 35vw;
   }
 
   .addButton {
-      margin-bottom: 300px;
-      margin-left: 100px;
-      button {
+    margin-bottom: 300px;
+    margin-left: 100px;
+    button {
       width: 100px;
-  }
+    }
   }
   .modalContainer {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .movieListHeader {
-
     h2 {
-        padding-right: 0;
+      padding-right: 0;
     }
   }
 
   .userList {
-
     ul {
-
-        li {
-
-            width: 45%;
-        }
+      li {
+        width: 45%;
+      }
     }
 
     button {
-        transform: scale(0.5);
-        top: -10px;
-
+      transform: scale(0.5);
+      top: -10px;
     }
 
     h2 {
-        font-size: 1.6rem;
-        // width: 100%;
+      font-size: 1.6rem;
     }
   }
 
   .userListContainer {
-      padding-top: 50px;
+    padding-top: 50px;
 
-      form {
-          width: 90%;
+    form {
+      width: 90%;
 
-          button {
-              width: 90%;
-          }
-
-          fieldset {
-              width: 30%;
-              padding: 0;
-          }
-
-          h3 {
-              font-size: 1.3rem;
-          }
+      button {
+        width: 90%;
       }
+
+      fieldset {
+        width: 30%;
+        padding: 0;
+      }
+
+      h3 {
+        font-size: 1.3rem;
+      }
+    }
   }
 
   .resultContainer {
@@ -118,54 +103,41 @@
     }
   }
 
-
-.movieDetailsDiv {
+  .movieDetailsDiv {
     flex-direction: column;
+  }
 
- 
-}
+  .youTubeSide {
+    display: none;
+  }
 
-   .youTubeSide {
-        display: none;
-    }
+  .modalLeft {
+    width: 90%;
+  }
 
-   .modalLeft {
-        width: 90%;
-    }
-
-.modalTextContent {
-
+  .modalTextContent {
     width: 100%;
     padding: 0;
 
+    p {
+      display: none;
+    }
+  }
 
-    p{
-    display: none;
-}
-}
-
-.randomPickModalContainer {
+  .randomPickModalContainer {
     width: 100%;
-}
+  }
 
-.menu-wrap .menu > div {
+  .menu-wrap .menu > div {
     width: 100%;
-}
+  }
 
-.randomPickModal {
+  .randomPickModal {
     width: 100%;
 
     img {
-        width: 110%;
-    }
-}
-}
-
-
-@media (max-width: 380px) {
-  header {
-    form {
-      width: 100%;
+      width: 110%;
     }
   }
 }
+

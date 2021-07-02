@@ -1,6 +1,4 @@
-
-// Hamburger
-
+// Hamburger User List Pop Up
 
 .menu-wrap {
   position: fixed;
@@ -11,7 +9,6 @@
   z-index: 11000;
   visibility: visible;
 }
-
 
 .menu-wrap .toggler {
   position: absolute;
@@ -110,22 +107,18 @@
   justify-content: center;
 }
 
-
 .menu-wrap .menu > div {
   background-color: $primaryColor;
   opacity: 1;
-  // border-radius: 50%;
   width: 90vw;
   height: 100vh;
   display: flex;
-  // flex: none;
-  // overflow: scroll;
   align-items: center;
   justify-content: center;
   transform: scale(0);
   transition: all 0.4s ease;
-   text-align: center;
-    box-shadow: 0 0 15px 20px rgba(0,0,0,0.5);
+  text-align: center;
+  box-shadow: 0 0 15px 20px rgba(0, 0, 0, 0.5);
 }
 
 .menu-wrap .menu-wrap > div > div {

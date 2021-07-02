@@ -1,9 +1,9 @@
 // Typography Styling
 
 body,
-button, 
+button,
 select {
-    font-family: $bodyFont;
+  font-family: $bodyFont;
 }
 
 button {
@@ -28,15 +28,13 @@ header {
   text-transform: uppercase;
   height: 85%;
 
-
   form {
     display: flex;
     flex-direction: column;
-        margin: 0 auto;
+    margin: 0 auto;
     width: 30%;
     letter-spacing: 1.3px;
-    // width: 50%;
-    
+
     input {
       margin: 20px 0;
       width: 100%;
@@ -57,7 +55,6 @@ h4 {
   font-family: $headerFont;
 }
 
-
 h1 {
   color: $secondaryColor;
   font-size: 4rem;
@@ -66,12 +63,9 @@ h1 {
   text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
 
   span {
-  color: $primaryColor;
+    color: $primaryColor;
+  }
 }
-
-}
-
-
 
 h3 {
   text-transform: uppercase;
@@ -79,32 +73,26 @@ h3 {
   font-weight: 700;
   color: $secondaryColor;
   margin: 15px 0;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.9);
-
-
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.9);
 }
 
 h4 {
-  // font-size: ;
-  // color: red;
   text-transform: uppercase;
   padding: 15px 0;
 
-    span {
+  span {
     text-transform: capitalize;
-
   }
 }
 
-// h5 {
-//   color: #E26822;
-//   font-size: 1.5rem;
-//   font-style: italic;
-//   letter-spacing: 1.2px;
-//   padding-top: 20px;
-//   text-align: center;
-// }
+ h5{
 
+  padding-top: 50px;
+    span{
+    color:red;
+    text-transform: uppercase;
+  }
+ }
 p {
   font-family: $bodyFont;
 }

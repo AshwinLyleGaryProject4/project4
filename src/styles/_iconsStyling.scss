@@ -1,9 +1,9 @@
 // Icons Styling
 
 .closeElementButton {
-    padding:0;
-    border:none;
-  }
+  padding: 0;
+  border: none;
+}
 
 .closeElementIcon {
   font-size: 3rem;
@@ -27,73 +27,59 @@
 
 .trashIcon {
   color: red;
-  // background: #fff;
-  // height: 35px;
-  // width: 150%;
-  // outlin: 1px solid #fff;
   font-size: 2rem;
-  // font-weight: bold;
   transition: all 0.2s ease-in-out;
   opacity: 0.8;
-
-  // background: rgb(34, 34, 34);
-  // box-shadow: 0 0 5px 5px rgba(0,0,0,0.8)
 }
 
 .trashIcon:hover {
   transform: rotateY(360deg) scale(1.2);
   transition-duration: 0.1s;
   opacity: 1;
-    cursor: scale(1.5);
+  cursor: scale(1.5);
 }
 
-  .randomSelectionButton {
-    // margin: 20px 0;
-    // height: 100px;
-    background: rgb(13, 151, 13);
-    font-size: 1.3rem;
-    width: 300px;
-    padding: 10px 10px;
-    border-radius: 15px;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 1.2px;
-    outline: 1px solid #000;
-  }
+.randomSelectionButton {
+  background: rgb(13, 151, 13);
+  font-size: 1.3rem;
+  width: 300px;
+  padding: 10px 10px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  outline: 1px solid #000;
+}
 
-  .randomSelectionButton:hover {
-    background: rgb(18, 209, 18);
-    // color: $primaryColor;
-  }
+.randomSelectionButton:hover {
+  background: rgb(18, 209, 18);
+}
 
 .addButton {
   position: absolute;
   bottom: 20px;
-      padding:0;
-    border:none;
-  }
+  padding: 0;
+  border: none;
+}
 
+.playButton {
+  margin: 20px 0;
+  background: rgb(13, 151, 13);
+  font-size: 1.3rem;
+  width: 300px;
+  padding: 10px 10px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  outline: 1px solid #000;
+}
 
-  .playButton {
-    margin: 20px 0;
-    // height: 100px;
-    background: rgb(13, 151, 13);
-    font-size: 1.3rem;
-    width: 300px;
-    padding: 10px 10px;
-    border-radius: 15px;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 1.2px;
-    outline: 1px solid #000;
-  }
+.playButton:hover {
+  background: rgb(18, 209, 18);
+}
 
-  .playButton:hover {
-    background: rgb(18, 209, 18);
-    // color: $primaryColor;
-  }
-
-  .chooseAgainButton {
-    height: 30px;
-    width: 150px;
-  }
+.chooseAgainButton {
+  height: 30px;
+  width: 150px;
+}
