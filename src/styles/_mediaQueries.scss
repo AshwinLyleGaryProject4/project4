@@ -99,16 +99,38 @@
   }
 }
 
-// .poster-image {
-//   width: 40%;
-// }
-
 }
+
+
+// 834px STYLING
 
 @media (max-width: 834px) {
 
+  h1 {
+    padding-top: 50px;
+  }
+
+.headerForm {
+  
+  form {
+    width: 60%;
+  }
+}
+
   .modal {
     height: 140vh;
+  }
+
+  .modalTextContent {
+
+    h3 {
+      text-align: left;
+      letter-spacing: 1.5px;
+    }
+
+    p {
+      line-height: 1.1;
+    }
   }
 
   .modalImageContent {
@@ -152,48 +174,58 @@
 // 480px STLYING
 
 @media (max-width: 480px) {
+
   .modal > div {
     padding: 0;
+       height: 95vh;
   }
 
-  header {
-    form {
-      width: 80%;
+    h1 {
+      padding-top: 100px;
     }
 
-    h1 {
-      padding-top: 60px;
+
+.headerForm    {
+
+    form {
+      justify-content: center;
+      align-items: center;
     }
+
+
   }
 
   .modalImageContent {
-    width: 120%;
+    width: 125%;
 
     h5 {
       padding: 0;
-      margin-bottom: 240px;
+      margin-bottom: 380px;
       margin-left: 100px;
     }
 
     img {
-      margin-bottom: 15px;
+      margin-bottom: 25px;
       width: 100%;
+      margin-top:0;
     }
   }
 
-  .poster-image {
-    width: 35vw;
-  }
+  // .poster-image {
+  //   width: 35vw;
+  // }
 
   .addButton {
-    margin-bottom: 300px;
-    margin-left: 100px;
+    margin-bottom: 320px;
+    margin-left: 75px;
     button {
-      width: 100px;
+      width: 150px;
     }
   }
   .modalContainer {
     flex-direction: column;
+    height: 100vh;
+ 
   }
 
   .movieListHeader {
@@ -209,10 +241,10 @@
       }
     }
 
-    button {
-      transform: scale(0.5);
-      top: -10px;
-    }
+    // button {
+    //   transform: scale(0.5);
+    //   top: -10px;
+    // }
 
     h2 {
       font-size: 1.6rem;
@@ -224,25 +256,35 @@
 
     form {
       width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
       button {
         width: 90%;
+        height: 70px;
       }
 
       fieldset {
-        width: 30%;
-        padding: 0;
+        width: 80%;
+        line-height: 1.8;
+        padding: 10px 0;
       }
 
       h3 {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
       }
     }
   }
 
   .resultContainer {
     li {
-      width: 38%;
+      width: 45%;
+
+      img {
+        min-width: 0;
+      }
     }
   }
 
@@ -258,9 +300,17 @@
     width: 90%;
   }
 
+  .modalRight {
+    height: 45%;
+  }
+
   .modalTextContent {
     width: 100%;
     padding: 0;
+
+    h3 {
+      font-size: 2rem;
+    }
 
     p {
       display: none;
